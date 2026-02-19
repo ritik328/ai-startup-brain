@@ -460,16 +460,55 @@ function sendMsg(text) {
 
     // AI Response (Simulated)
     setTimeout(() => {
-        const responses = [
-            "Good point. But how do we handle the scalability of that approach?",
-            "The market data suggests that's a high-growth area. Let's dig deeper.",
-            "I'm worried about our burn rate if we go that route. What's the ROI?",
-            "Brilliant. I'll add that to our go-to-market strategy slides.",
-            "Wait, have we considered the regulatory implications in the EU?",
-            "Let's focus on the MVP first. Is that feature strictly necessary?",
-            "I love the ambition. That would definitely scare our competitors."
-        ];
-        const aiResponse = responses[Math.floor(Math.random() * responses.length)];
+        const lowerText = text.toLowerCase();
+        let aiResponse = "That's a solid start, but have you validated the unit economics yet?";
+
+        // Keyword Matching Logic
+        if (lowerText.includes('roast') || lowerText.includes('critique') || lowerText.includes('bad')) {
+            const roasts = [
+                "Honest feedback? It sounds like a feature, not a company.",
+                "I'm not seeing a moat here. validated deep tech or just a wrapper?",
+                "The TAM looks small. Are you sure this isn't a lifestyle business?",
+                "Competitors like Google could build this in a weekend. What's your secret sauce?"
+            ];
+            aiResponse = roasts[Math.floor(Math.random() * roasts.length)];
+        }
+        else if (lowerText.includes('scale') || lowerText.includes('growth') || lowerText.includes('user')) {
+            const scale = [
+                " viral coefficient > 1.5 is key. Focus on product-led growth loops.",
+                "Paid ads are too expensive. Have you thought about programmatic SEO?",
+                "Content marketing is slow but compounded. Start building an audience now.",
+                "Partnerships with established players could 10x your reach overnight."
+            ];
+            aiResponse = scale[Math.floor(Math.random() * scale.length)];
+        }
+        else if (lowerText.includes('money') || lowerText.includes('fund') || lowerText.includes('invest') || lowerText.includes('price')) {
+            const funding = [
+                "Investors want to see $100k ARR before Series A. Focus on revenue.",
+                "Freemium is tricky. Make sure your conversion rate is above 3%.",
+                "Bootstrapping gives you control, but VC gives you speed. Choose wisely.",
+                "Your CAC/LTV ratio needs to be at least 1:3 for this to work."
+            ];
+            aiResponse = funding[Math.floor(Math.random() * funding.length)];
+        }
+        else if (lowerText.includes('team') || lowerText.includes('hire') || lowerText.includes('founder')) {
+            const team = [
+                "Don't hire too fast. Keep the burn rate low until PMF.",
+                "A technical co-founder is non-negotiable for this stack.",
+                "Culture eats strategy for breakfast. Hire for mindset, not just skill.",
+                " outsource non-core tasks. Keep the core IP in-house."
+            ];
+            aiResponse = team[Math.floor(Math.random() * team.length)];
+        }
+        else if (lowerText.includes('tech') || lowerText.includes('stack') || lowerText.includes('build')) {
+            const tech = [
+                "Keep it simple. Monolith first, microservices later.",
+                "Don't over-engineer the MVP. Speed to market is everything.",
+                "Focus on security early if you're handling PII.",
+                "Mobile-first or desktop? Your analytics should tell you."
+            ];
+            aiResponse = tech[Math.floor(Math.random() * tech.length)];
+        }
 
         const aiDiv = document.createElement('div');
         aiDiv.className = 'flex gap-2 animate-in fade-in';
@@ -713,9 +752,14 @@ function renderResult(idea, industry, budget, currency = 'USD') {
         const synthesizedBody = synthesizeContent(step.body, keywords, industry);
 
         roadmapHtml += `
-            <div class="relative pl-8 timeline-item">
+            <div class="relative pl-8 timeline-item group">
                 <div class="absolute -left-[calc(0.5rem+1px)] top-1 w-4 h-4 rounded-full ${dotColor} border-4 border-white"></div>
-                <h4 class="font-bold text-gray-900 text-sm">${step.title}</h4>
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-gray-900 text-sm">${step.title}</h4>
+                    <button onclick="copyToClipboard('${step.title}: ${synthesizedBody.replace(/'/g, "\\'")}', 'copy-roadmap-${idx}')" id="copy-roadmap-${idx}" class="text-gray-400 hover:text-black dark:text-gray-500 dark:hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                </div>
                 <p class="text-xs text-gray-500 mt-1 mb-2">${synthesizedBody}</p>
                 <div class="flex gap-2 flex-wrap">
                     ${step.tags.map(tag => `<span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
@@ -760,10 +804,13 @@ function renderResult(idea, industry, budget, currency = 'USD') {
     };
     const team = teamData[industry] || teamData["SaaS"];
     let teamHtml = '';
-    team.forEach(t => {
+    team.forEach((t, idx) => {
         const colors = { blue: 'bg-gray-100 text-gray-900', gray: 'bg-gray-100 text-gray-600', purple: 'bg-gray-100 text-gray-900' };
         teamHtml += `
-            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 group relative">
+                <button onclick="copyToClipboard('${t.role}: ${t.desc}', 'copy-team-${idx}')" id="copy-team-${idx}" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors opacity-0 group-hover:opacity-100">
+                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </button>
                 <div class="w-10 h-10 rounded-full ${colors[t.color]} flex items-center justify-center font-bold text-sm mb-3">${t.role.charAt(0)}</div>
                 <h4 class="font-bold text-gray-900 text-sm mb-1">${t.role}</h4>
                 <p class="text-xs text-gray-500">${t.desc}</p>
@@ -1112,4 +1159,44 @@ function initBackground() {
         requestAnimationFrame(frame);
     };
     frame();
+}
+
+// --- NEW FEATURE: Export PDF ---
+function exportPDF() {
+    const element = document.getElementById('demo-result-view');
+    const btn = document.querySelector('button[onclick="exportPDF()"]');
+
+    // Feedback
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<span class="animate-pulse">Generating...</span>`;
+
+    const opt = {
+        margin: [10, 10, 10, 10], // top, left, bottom, right
+        filename: `StartupBrain_Plan_${new Date().toISOString().slice(0, 10)}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Temporarily hide buttons for clean PDF
+    const buttons = element.querySelectorAll('button');
+    buttons.forEach(b => b.style.opacity = '0');
+
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Restore
+        buttons.forEach(b => b.style.opacity = '1');
+        btn.innerHTML = originalText;
+    });
+}
+
+// --- NEW FEATURE: Copy to Clipboard ---
+function copyToClipboard(text, id) {
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(id);
+        const original = btn.innerHTML;
+        btn.innerHTML = `<svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+        setTimeout(() => {
+            btn.innerHTML = original;
+        }, 2000);
+    });
 }

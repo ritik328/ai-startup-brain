@@ -173,16 +173,15 @@
 
                 <h1
                     class="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-gray-900 dark:text-white animate-in fade-in slide-in-bottom delay-100">
-                    Validate your startup idea<br>
-                    <span>before
-                        you build it.</span>
+                    Instantly generate a <br>
+                    <span>data-backed
+                        startup plan.</span>
                 </h1>
 
                 <p
                     class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200">
-                    Stop guessing. Get a comprehensive <strong>business plan</strong>, <strong>financial
-                        projections</strong>, and <strong>competitor analysis</strong> in seconds. Used by 10,000+
-                    founders.
+                    Turn a raw idea into a <strong>structured business model</strong>, <strong>growth roadmap</strong>,
+                    and <strong>investor pitch deck</strong> in 30 seconds.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -238,9 +237,46 @@
                         </div>
                         <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Real-time niche analysis.</h2>
                         <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
-                            Stop guessing. Our AI taps into 50+ data sources including Crunchbase, Google Trends, and
-                            Patent Offices to validate your idea against real-world demand pulses.
+                            StartupBrain AI correlates 50+ data points to simulate:
                         </p>
+                        <ul class="space-y-3 mb-8 text-gray-600 dark:text-slate-400">
+                            <li class="flex items-center gap-3">
+                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg></span>
+                                <span><strong>Problem & Solution</strong> statements validation</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg></span>
+                                <span><strong>Revenue & Marketing</strong> strategy modeling</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg></span>
+                                <span><strong>Growth Roadmap</strong> (Seed to Series A)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg></span>
+                                <span><strong>Idea Strength</strong> confidence meter</span>
+                            </li>
+                        </ul>
                         <div class="flex flex-col gap-4">
                             <div
                                 class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border border-gray-100 dark:border-slate-800">
@@ -570,6 +606,9 @@
                                 <p class="text-xs text-gray-500">Founder, GreenLife</p>
                             </div>
                         </div>
+                        <h4>Growth Roadmap</h4>
+                        <p class="text-muted small">Step-by-step execution plan from Seed to Series A, tailored to your
+                            specific industry methodology.</p>
                         <p class="text-sm text-gray-600 italic mb-4">"The competitor analysis saved me weeks of
                             research. It's like having a co-founder for strategy."</p>
                         <div class="flex text-gray-900 dark:text-white text-xs">★★★★½</div>
@@ -957,6 +996,14 @@
                         Start Over
                     </button>
                     <div class="flex items-center gap-3">
+                        <button onclick="exportPDF()"
+                            class="px-4 py-1.5 rounded-full bg-red-600 text-white text-xs font-bold border border-red-500 hover:bg-red-700 transition-colors flex items-center gap-2 uppercase tracking-wide">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Export PDF
+                        </button>
                         <button onclick="togglePitchMode()"
                             class="px-4 py-1.5 rounded-full bg-gray-900 dark:bg-slate-700 text-white text-xs font-bold border border-gray-900 dark:border-slate-600 hover:bg-gray-800 dark:hover:bg-slate-600 transition-colors flex items-center gap-2 uppercase tracking-wide">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1612,24 +1659,30 @@
 
                 <div class="bento-card p-10 bg-gray-50 dark:bg-slate-900 text-left w-full">
                     <h3 class="text-xl font-bold mb-8 text-gray-900 dark:text-white text-center">Product Roadmap</h3>
-                    <div class="space-y-10 max-w-lg mx-auto">
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Q1 2024: Alpha Launch</h4>
-                            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Initial beta of the Startup
-                                Generator Engine and basic
-                                analytics.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-lg mx-auto">
+                        <div class="col-md-4 reveal">
+                            <div class="glass-card h-100 tilt-card p-4">
+                                <div class="display-6 fw-bold mb-3" style="color: var(--border);">01</div>
+                                <h4 class="mb-2">Where to Start?</h4>
+                                <p class="small text-muted">Confusion kills innovation. We provide a structured Logic
+                                    Model based on YC frameworks.</p>
+                            </div>
                         </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Q3 2024: Market Live Feed</h4>
-                            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Connecting AI predictions to
-                                real-time stock and
-                                venture market data.</p>
+                        <div class="col-md-4 reveal">
+                            <div class="glass-card h-100 tilt-card p-4">
+                                <div class="display-6 fw-bold mb-3" style="color: var(--border);">02</div>
+                                <h4 class="mb-2">Who is the Customer?</h4>
+                                <p class="small text-muted">Stop guessing. Our AI identifies your Ideal Customer Profile
+                                    (ICP) and Total Addressable Market (TAM).</p>
+                            </div>
                         </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="font-bold text-gray-400 dark:text-slate-500 text-sm">2025: VC Matching</h4>
-                            <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">Automated pitch deck generation
-                                and matching with
-                                active angel investors.</p>
+                        <div class="col-md-4 reveal">
+                            <div class="glass-card h-100 tilt-card p-4">
+                                <div class="display-6 fw-bold mb-3" style="color: var(--border);">03</div>
+                                <h4 class="mb-2">How to Monetize?</h4>
+                                <p class="small text-muted">Turning an idea into revenue is an art. We generate 3 viable
+                                    business models with pricing tiers.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1749,6 +1802,8 @@
     </div>
 
     <!-- Logic -->
+    <!-- PDF Export Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 
