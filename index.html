@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupBrain AI | Build Your Future</title>
+    <meta name="description"
+        content="Validate your startup idea in seconds. Generate comprehensive business plans, financial models, and pitch decks with AI.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter Only -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        primaryHover: '#1D4ED8',
+                        bgPrimary: '#FFFFFF',
+                        bgSecondary: '#F9FAFB',
+                        textPrimary: '#111827',
+                        textSecondary: '#6B7280',
+                        borderLight: '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased bg-white dark:bg-slate-900 transition-colors duration-300 min-h-screen flex flex-col">
+    <!-- BACKGROUND ANIMATION LAYER -->
+    <div id="bg-canvas-container" class="fixed inset-0 pointer-events-none z-[-2] opacity-100"></div>
+    <div id="bg-overlay"
+        class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(circle_at_center,transparent_0%,white_80%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#0F172A_80%)] opacity-10">
+    </div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <!-- Logo Animation -->
+            <div class="preloader-logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                        <path d="M12 2a10 10 0 0 1 10 10h-7.5l-3.5 3.5-3.5-3.5H2" />
+                        <path d="M7.5 15.5 10 18l5-5" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Brand Name with Letter Reveal -->
+            <div class="preloader-brand">
+                <span class="brand-letter" style="animation-delay: 0.1s">S</span>
+                <span class="brand-letter" style="animation-delay: 0.15s">t</span>
+                <span class="brand-letter" style="animation-delay: 0.2s">a</span>
+                <span class="brand-letter" style="animation-delay: 0.25s">r</span>
+                <span class="brand-letter" style="animation-delay: 0.3s">t</span>
+                <span class="brand-letter" style="animation-delay: 0.35s">u</span>
+                <span class="brand-letter" style="animation-delay: 0.4s">p</span>
+                <span class="brand-letter" style="animation-delay: 0.45s">B</span>
+                <span class="brand-letter" style="animation-delay: 0.5s">r</span>
+                <span class="brand-letter" style="animation-delay: 0.55s">a</span>
+                <span class="brand-letter" style="animation-delay: 0.6s">i</span>
+                <span class="brand-letter" style="animation-delay: 0.65s">n</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar" id="preloader-bar"></div>
+            </div>
+            <div class="preloader-status" id="preloader-status">Loading modules...</div>
+        </div>
+    </div>
+
+    <!-- Navigation (Centered Layout) -->
+    <nav class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <div
+            class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-gray-200 dark:border-slate-800 rounded-full py-3 px-6 shadow-sm flex items-center gap-8 max-w-2xl w-full justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('home')">
+                <div class="w-6 h-6 bg-black dark:bg-white rounded flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white dark:text-black"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                        <path d="M12 2a10 10 0 0 1 10 10h-7.5l-3.5 3.5-3.5-3.5H2" />
+                        <path d="M7.5 15.5 10 18l5-5" />
+                    </svg>
+                </div>
+                <span class="text-sm font-bold tracking-tight text-gray-900 dark:text-white">StartupBrain</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a onclick="navigateTo('home')" class="nav-link active" id="link-home">Home</a>
+                <a onclick="navigateTo('demo')" class="nav-link" id="link-demo">Demo</a>
+                <a onclick="navigateTo('features')" class="nav-link" id="link-features">Features</a>
+                <a onclick="navigateTo('pricing')" class="nav-link" id="link-pricing">Pricing</a>
+                <a onclick="navigateTo('about')" class="nav-link" id="link-about">About</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Theme Toggle Removed -->
+                <button onclick="navigateTo('demo')"
+                    class="hidden md:block btn-primary px-4 py-1.5 text-xs font-semibold">
+                    Get Started
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()"
+                    class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu"
+            class="hidden fixed top-20 left-4 right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-gray-100 dark:border-slate-800 rounded-2xl p-4 shadow-2xl flex-col gap-2 z-50 md:hidden animate-in slide-in-top-2">
+            <a onclick="navigateTo('home'); toggleMobileMenu()"
+                class="p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-semibold transition-colors">Home</a>
+            <a onclick="navigateTo('features'); toggleMobileMenu()"
+                class="p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-semibold transition-colors">Features</a>
+            <a onclick="navigateTo('pricing'); toggleMobileMenu()"
+                class="p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-semibold transition-colors">Pricing</a>
+            <a onclick="navigateTo('demo'); toggleMobileMenu()"
+                class="p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-semibold transition-colors">Demo</a>
+            <a onclick="navigateTo('about'); toggleMobileMenu()"
+                class="p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-200 font-semibold transition-colors">About</a>
+            <div class="h-px bg-gray-100 dark:bg-slate-800 my-1"></div>
+            <button onclick="navigateTo('demo'); toggleMobileMenu()"
+                class="w-full btn-primary py-3 font-bold text-center">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-32 pb-20 max-w-6xl mx-auto px-6 flex-grow w-full">
+
+        <!-- PAGE 1: HOME -->
+        <section id="page-home" class="page-container transition-opacity duration-500 flex flex-col items-center">
+            <!-- Hero -->
+            <div class="text-center mb-20 max-w-4xl mx-auto pt-10">
+                <div class="mb-8 flex justify-center animate-in fade-in slide-in-bottom">
+                    <div class="pill-badge cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors border border-gray-200 dark:border-slate-700"
+                        onclick="navigateTo('features')">
+                        <span class="mr-2 font-bold">★</span>
+                        <span class="font-bold text-gray-900 dark:text-white">v2.0:
+                            Now with Financial Modeling</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+                <h1
+                    class="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-gray-900 dark:text-white animate-in fade-in slide-in-bottom delay-100">
+                    Validate your startup idea<br>
+                    <span>before
+                        you build it.</span>
+                </h1>
+
+                <p
+                    class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200">
+                    Stop guessing. Get a comprehensive <strong>business plan</strong>, <strong>financial
+                        projections</strong>, and <strong>competitor analysis</strong> in seconds. Used by 10,000+
+                    founders.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="navigateTo('demo')"
+                        class="btn-primary px-8 py-4 font-semibold text-lg shadow-lg shadow-gray-200">
+                        Try Generator Free
+                    </button>
+                    <button onclick="navigateTo('about')"
+                        class="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 rounded-full font-semibold text-lg transition-all">
+                        How it Works
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trusted By / Stats Strip (Centered) -->
+            <div
+                class="w-full border-y border-gray-100 dark:border-slate-800 py-10 mb-20 bg-gray-50/50 dark:bg-slate-800/20 rounded-2xl">
+                <div class="max-w-4xl mx-auto text-center">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by 12,000+
+                        Founders</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center justify-center">
+                        <div class="flex flex-col items-center">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                data-target="12000">0</span>
+                            <span class="text-sm text-gray-500 dark:text-slate-400">Ideas Generated</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                data-target="92">0</span>
+                            <span class="text-sm text-gray-500 dark:text-slate-400">Accuracy Rate</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                data-target="500">0</span>
+                            <span class="text-sm text-gray-500 dark:text-slate-400">Business Models</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: LIVE MARKET INTELLIGENCE -->
+            <div class="w-full max-w-6xl mb-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-left">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wide mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                            </span>
+                            Live Market Feed
+                        </div>
+                        <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Real-time niche analysis.</h2>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
+                            Stop guessing. Our AI taps into 50+ data sources including Crunchbase, Google Trends, and
+                            Patent Offices to validate your idea against real-world demand pulses.
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div
+                                class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border border-gray-100 dark:border-slate-800">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-900 dark:text-white">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Trend Velocity</h4>
+                                    <p class="text-sm text-gray-500 dark:text-slate-400">Predicts hype cycles before
+                                        they peak.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border border-gray-100 dark:border-slate-800">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-900 dark:text-white">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Competitor Density</h4>
+                                    <p class="text-sm text-gray-500 dark:text-slate-400">Heatmaps of saturated vs. blue
+                                        ocean markets.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual: Live Dashboard -->
+                    <div class="bento-card p-6 bg-black text-white relative overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-white">
+                        </div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-sm text-gray-400 uppercase tracking-wider">Market Pulse</h3>
+                            <div class="flex items-center gap-2">
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                </span>
+                                <span class="text-xs text-white font-mono">LIVE</span>
+                            </div>
+                        </div>
+
+                        <!-- Trends Chart -->
+                        <!-- Trends Chart -->
+                        <div class="flex items-end justify-between h-32 gap-2 mb-2 px-2">
+                            <!-- Bar 1: SaaS -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    SaaS:<span class="live-metric">+40%</span></div>
+                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                    style="height: 40%"></div>
+                            </div>
+                            <!-- Bar 2: AI -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    AI:<span class="live-metric">+60%</span></div>
+                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                    style="height: 60%; animation-delay: 0.1s"></div>
+                            </div>
+                            <!-- Bar 3: Bio -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    Bio:<span class="live-metric">+85%</span></div>
+                                <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
+                                    style="height: 85%; animation-delay: 0.2s"></div>
+                            </div>
+                            <!-- Bar 4: Fin -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    Fin:<span class="live-metric">+50%</span></div>
+                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                    style="height: 50%; animation-delay: 0.3s"></div>
+                            </div>
+                            <!-- Bar 5: Eco -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    Eco:<span class="live-metric">+70%</span></div>
+                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                    style="height: 70%; animation-delay: 0.4s"></div>
+                            </div>
+                            <!-- Bar 6: Auto -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    Auto:<span class="live-metric">+90%</span></div>
+                                <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
+                                    style="height: 90%; animation-delay: 0.5s"></div>
+                            </div>
+                            <!-- Bar 7: Edu -->
+                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                <div
+                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                    Edu:<span class="live-metric">+30%</span></div>
+                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                    style="height: 30%; animation-delay: 0.6s"></div>
+                            </div>
+                        </div>
+
+                        <!-- Labels -->
+                        <div
+                            class="flex justify-between px-2 mb-6 text-[10px] text-gray-500 font-mono tracking-widest uppercase">
+                            <span class="w-full text-center">SaaS</span>
+                            <span class="w-full text-center">AI</span>
+                            <span class="w-full text-center">Bio</span>
+                            <span class="w-full text-center">Fin</span>
+                            <span class="w-full text-center">Eco</span>
+                            <span class="w-full text-center">Auto</span>
+                            <span class="w-full text-center">Edu</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 border-t border-gray-800 pt-6">
+                            <div class="text-center group cursor-help relative">
+                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">24h Vol
+                                </div>
+                                <div class="text-lg font-bold live-metric">84.2%</div>
+                                <div
+                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                    Global startup formation rate vs. 24h avg</div>
+                            </div>
+                            <div class="text-center border-l border-gray-800 group cursor-help relative">
+                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">Net
+                                    Inflow</div>
+                                <div class="text-lg font-bold text-white live-metric">$4.2M</div>
+                                <div
+                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                    Venture capital committed in last 60 mins</div>
+                            </div>
+                            <div class="text-center border-l border-gray-800 group cursor-help relative">
+                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">
+                                    Sentiment</div>
+                                <div class="text-lg font-bold text-white live-metric">+12.5%</div>
+                                <div
+                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                    Social signal strength for emerging tech</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: VISUAL WORKFLOW (How It Works) -->
+            <div class="w-full max-w-5xl mb-24 text-center">
+                <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white">From Napkin Sketch to IPO Roadshow
+                </h2>
+                <div class="relative pt-10 pb-10">
+                    <!-- Connector Line -->
+                    <div
+                        class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-slate-800 -translate-y-1/2 hidden md:block z-0">
+                        <div class="data-packet w-20"></div>
+                        <div class="data-packet w-20" style="animation-delay: 1.5s"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="bento-card p-8 floating delay-100">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+                                1</div>
+                            <h3 class="text-xl font-bold mb-2">Input Idea</h3>
+                            <p class="text-sm text-gray-500 dark:text-slate-400">Describe your concept in plain English.
+                                No business jargon
+                                required.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bento-card p-8 bg-white floating delay-300 border-gray-200">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+                                2</div>
+                            <h3 class="text-xl font-bold mb-2 text-black">AI Processing</h3>
+                            <p class="text-sm text-gray-500">Millions of data points analyzed to structure your business
+                                model.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bento-card p-8 bg-white floating delay-500">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gray-900 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+                                3</div>
+                            <h3 class="text-xl font-bold mb-2">Execute Plan</h3>
+                            <p class="text-sm text-gray-500">Receive a 15-page strategy doc, financial forecast, and
+                                pitch deck.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: GROWTH ENGINE CHART -->
+            <div class="w-full max-w-6xl mb-24 bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-900/20 to-transparent pointer-events-none">
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">The Growth Engine</h2>
+                        <p class="text-gray-400 text-lg mb-8">
+                            Visualize your path from Seed to Series B. Our simulation engine predicts cash flow
+                            bottlenecks before they happen.
+                        </p>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Automated Burn Rate Calculation
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Customer Acquisition Cost (CAC) Modeling
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Identify Revenue Churn Risks
+                            </li>
+                        </ul>
+                        <button onclick="navigateTo('demo')"
+                            class="mt-8 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                            Simulate Growth
+                        </button>
+                    </div>
+
+                    <!-- SVG Chart Animation -->
+                    <div class="relative h-64 w-full">
+                        <svg class="w-full h-full overflow-visible" viewBox="0 0 400 200">
+                            <!-- Grid -->
+                            <line x1="0" y1="200" x2="400" y2="200" stroke="#374151" stroke-width="2" />
+                            <line x1="0" y1="0" x2="0" y2="200" stroke="#374151" stroke-width="2" />
+
+                            <!-- Area Fill -->
+                            <path d="M0,200 Q100,180 200,100 T400,20 V200 H0 Z" fill="url(#grad1)" opacity="0.2" />
+
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#000000;stop-opacity:0.2" />
+                                    <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- The Animated Line -->
+                            <path class="growth-line" d="M0,200 Q100,180 200,100 T400,20" fill="none" stroke="#ffffff"
+                                stroke-width="3" stroke-linecap="round" />
+
+                            <!-- Points -->
+                            <circle cx="0" cy="200" r="4" fill="white" />
+                            <circle cx="200" cy="100" r="4" fill="white" class="floating delay-100">
+                                <title>Series A</title>
+                            </circle>
+                            <circle cx="400" cy="20" r="4" fill="white" class="floating delay-300">
+                                <title>IPO</title>
+                            </circle>
+
+                            <!-- Tooltip Card (Mock) -->
+                            <foreignObject x="220" y="30" width="120" height="60">
+                                <div class="bg-gray-800 p-2 rounded-lg border border-gray-700 shadow-xl text-xs">
+                                    <div class="font-bold text-white">Projected ARR</div>
+                                    <div class="text-gray-300 font-mono">$12.5M</div>
+                                </div>
+                            </foreignObject>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intro to Features -->
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Why startups fail?</h2>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                    Most founders have the spark but lack the roadmap.
+                    <a onclick="navigateTo('features')"
+                        class="text-gray-900 dark:text-white font-semibold cursor-pointer hover:underline">Explore our
+                        solutions →</a>
+                </p>
+            </div>
+
+            <!-- Testimonials (Recovered Feature) -->
+            <div class="w-full max-w-5xl mx-auto mb-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Loved by Innovators</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bento-card p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                JD</div>
+                            <div>
+                                <h5 class="font-bold text-sm">John Doe</h5>
+                                <p class="text-xs text-gray-500">CEO, TechFlow</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 italic mb-4">"I generated a complete business plan in minutes.
+                            The financial projections were surprisingly accurate for an AI."</p>
+                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
+                    </div>
+                    <div class="bento-card p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                AS</div>
+                            <div>
+                                <h5 class="font-bold text-sm">Alice Smith</h5>
+                                <p class="text-xs text-gray-500">Founder, GreenLife</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 italic mb-4">"The competitor analysis saved me weeks of
+                            research. It's like having a co-founder for strategy."</p>
+                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★½</div>
+                    </div>
+                    <div class="bento-card p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                MR</div>
+                            <div>
+                                <h5 class="font-bold text-sm">Michael Ross</h5>
+                                <p class="text-xs text-gray-500">Product Lead</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 italic mb-4">"The best tool for validating MVP ideas. I use it
+                            for every hackathon project we run."</p>
+                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="w-full max-w-3xl mx-auto mb-20 px-4 animate-in fade-in slide-in-bottom delay-100">
+                <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <details
+                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                        <summary
+                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                            Is the data real or hallucinated?
+                            <span
+                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                            We use a hybrid approach. The structural logic and financial formulas are deterministic
+                            based on industry standards. The text content is generated by LLMs trained on successful
+                            pitch decks.
+                        </p>
+                    </details>
+                    <details
+                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                        <summary
+                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                            Can I export this to PDF?
+                            <span
+                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                            Yes! You can simply use your browser's "Print to PDF" function. The layout is optimized for
+                            A4 printing. A native "Export Deck" feature is coming soon.
+                        </p>
+                    </details>
+                    <details
+                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                        <summary
+                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                            Is my idea kept private?
+                            <span
+                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                            Absolutely. We do not store your idea inputs or share them with third parties. Your session
+                            is ephemeral and runs locally in your browser context.
+                        </p>
+                    </details>
+                </div>
+            </section>
+        </section>
+
+
+        <!-- PAGE: PRICING -->
+        <section id="page-pricing" class="page-container hidden-page w-full max-w-5xl mb-24 mx-auto pt-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Simple, transparent pricing</h2>
+                <p class="text-gray-500 dark:text-slate-400">Join 12,000+ founders building the future.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free Tier -->
+                <div class="bento-card p-8 flex flex-col bg-white dark:bg-slate-900">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Solo Founder</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold text-gray-900 dark:text-white">$0</span>
+                        <span class="text-gray-500 dark:text-slate-400">/ forever</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            1 Idea Generation / Week
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Standard Market Analysis
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 border border-gray-200 dark:border-slate-700 rounded-full font-bold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Current
+                        Plan</button>
+                </div>
+
+                <!-- Pro Tier -->
+                <div
+                    class="bento-card p-8 flex flex-col relative ring-2 ring-black dark:ring-white bg-white dark:bg-slate-900">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                        Most Popular</div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Serial Builder</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold text-gray-900 dark:text-white">$29</span>
+                        <span class="text-gray-500 dark:text-slate-400">/ month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-gray-600 dark:text-slate-400">
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Unlimited Generations
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Financial Projections (Excel/PDF)
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Priority AI Co-founder Support
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 bg-black text-white rounded-full font-bold hover:bg-gray-800 transition-colors shadow-lg">Upgrade
+                        Now</button>
+                </div>
+
+                <!-- Agency Tier -->
+                <div class="bento-card p-8 flex flex-col bg-white dark:bg-slate-900">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Agency</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold text-gray-900 dark:text-white">$99</span>
+                        <span class="text-gray-500 dark:text-slate-400">/ month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            5 User Seats
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
+                            <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            White-label Reports
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 border border-gray-200 dark:border-slate-700 rounded-full font-bold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Contact
+                        Sales</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PAGE 2: DEMO SELECTOR -->
+        <section id="page-demo" class="page-container hidden-page flex flex-col items-center">
+            <div id="demo-input-view" class="w-full flex flex-col items-center">
+                <div class="max-w-3xl w-full text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">What are you building?</h2>
+                    <p class="text-gray-500 dark:text-slate-400">Select an industry to unlock specific market logic.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mb-12">
+                    <div onclick="selectIndustry('SaaS')" class="industry-card bento-card p-6 cursor-pointer group"
+                        id="industry-SaaS">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">SaaS</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Software as a Service</p>
+                    </div>
+                    <div onclick="selectIndustry('FinTech')" class="industry-card bento-card p-6 cursor-pointer group"
+                        id="industry-FinTech">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">FinTech</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Financial Technology</p>
+                    </div>
+                    <div onclick="selectIndustry('HealthTech')"
+                        class="industry-card bento-card p-6 cursor-pointer group" id="industry-HealthTech">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">HealthTech</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Healthcare Technology</p>
+                    </div>
+                    <div onclick="selectIndustry('E-commerce')"
+                        class="industry-card bento-card p-6 cursor-pointer group" id="industry-E-commerce">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">E-commerce</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Online Retail & Marketplaces</p>
+                    </div>
+                    <div onclick="selectIndustry('Sustainability')"
+                        class="industry-card bento-card p-6 cursor-pointer group" id="industry-Sustainability">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">Sustainability</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Green Tech & Circular Economy</p>
+                    </div>
+                    <div onclick="selectIndustry('Education')" class="industry-card bento-card p-6 cursor-pointer group"
+                        id="industry-Education">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 mb-4 group-hover:bg-black group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.206 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.794 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.794 5 16.5 5c1.706 0 3.332.477 4.5 1.253v13C19.832 18.477 18.206 18 16.5 18s-3.332.477-4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-gray-900 dark:text-white">EdTech</h3>
+                        <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Education Technology</p>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-xl">
+                    <div class="bento-card p-8 space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-700 dark:text-slate-300">Your
+                                Startup
+                                Idea</label>
+                            <!-- Hidden Input for Industry -->
+                            <input type="hidden" id="input-industry" value="SaaS">
+                            <textarea id="input-idea"
+                                class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white rounded-xl p-4 focus:outline-none focus:border-black dark:focus:border-white focus:ring-0 transition-all h-32 placeholder-gray-400 dark:placeholder-slate-500 resize-none"
+                                placeholder="e.g. A marketplace for recycled ocean plastic products..."></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex gap-4">
+                                <div class="w-3/4">
+                                    <label
+                                        class="block text-sm font-semibold mb-2 text-gray-700 dark:text-slate-300">Budget
+                                        Level</label>
+                                    <div class="relative">
+                                        <select id="input-budget"
+                                            class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white rounded-xl p-4 appearance-none focus:outline-none focus:border-black dark:focus:border-white transition-all">
+                                            <option value="Low">Low (MVP)</option>
+                                            <option value="Medium">Medium (Growth)</option>
+                                            <option value="High">High (Scale)</option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 dark:text-slate-400">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/4">
+                                    <label
+                                        class="block text-sm font-semibold mb-2 text-gray-700 dark:text-slate-300">Currency</label>
+                                    <div class="relative">
+                                        <select id="input-currency"
+                                            class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white rounded-xl p-4 appearance-none focus:outline-none focus:border-black dark:focus:border-white transition-all">
+                                            <option value="USD">$</option>
+                                            <option value="INR">₹</option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 dark:text-slate-400">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-gray-700 dark:text-slate-300">Target
+                                    Market</label>
+                                <div class="relative">
+                                    <select id="input-market"
+                                        class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white rounded-xl p-4 appearance-none focus:outline-none focus:border-black dark:focus:border-white transition-all">
+                                        <option value="Local">Local (City/Region)</option>
+                                        <option value="National">National (Country)</option>
+                                        <option value="Global">Global</option>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 dark:text-slate-400">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="generate-plan-btn"
+                            class="w-full btn-primary py-4 rounded-xl font-bold text-lg mt-2 shadow-sm">
+                            Generate Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="demo-loading-view" class="hidden-page text-center py-32">
+                <div class="flex flex-col items-center">
+                    <div class="loader-ring mb-8"></div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" id="loading-status">Analyzing
+                        Market Trends...</h3>
+                    <p class="text-gray-500 dark:text-slate-400" id="loading-sub">Accessing global startup databases
+                    </p>
+                </div>
+            </div>
+
+            <!-- Results State -->
+            <div id="demo-result-view" class="hidden-page space-y-8 w-full max-w-6xl">
+                <!-- Top Bar -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                    <button onclick="resetDemo()"
+                        class="text-gray-500 dark:text-slate-400 hover:text-black dark:hover:text-white flex items-center gap-2 font-medium transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                        Start Over
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <button onclick="togglePitchMode()"
+                            class="px-4 py-1.5 rounded-full bg-gray-900 dark:bg-slate-700 text-white text-xs font-bold border border-gray-900 dark:border-slate-600 hover:bg-gray-800 dark:hover:bg-slate-600 transition-colors flex items-center gap-2 uppercase tracking-wide">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z">
+                                </path>
+                            </svg>
+                            Pitch Deck Mode
+                        </button>
+                        <div
+                            class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 px-4 py-1.5 rounded-full text-xs font-bold border border-gray-200 dark:border-slate-700 uppercase tracking-wide">
+                            AI Generated Report</div>
+                    </div>
+                </div>
+
+                <!-- SECTION 1: Company Header Card -->
+                <div class="bento-card p-8 md:p-10 relative overflow-hidden bg-white dark:bg-slate-900">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-black dark:bg-white">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div id="res-logo-container"></div>
+                                <h2 id="res-name" class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                                    Startup Name</h2>
+                            </div>
+                            <p id="res-tagline" class="text-xl text-gray-500 dark:text-slate-400 font-light">Compelling
+                                one-line tagline
+                                here.</p>
+                        </div>
+                        <div class="flex gap-3 flex-shrink-0">
+                            <span id="res-industry-badge"
+                                class="bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide border border-gray-200 dark:border-slate-700">SaaS</span>
+                            <span id="res-budget-badge"
+                                class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide border border-gray-200 dark:border-slate-700">Seed</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI Strip -->
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100 dark:border-slate-800">
+                        <div class="text-center md:text-left">
+                            <div
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+                                Viability Score
+                            </div>
+                            <div id="res-kpi-score" class="text-2xl font-bold text-gray-900 dark:text-white">0%</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+                                Market Size
+                            </div>
+                            <div id="res-kpi-market" class="text-2xl font-bold text-gray-900 dark:text-white">$0B</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+                                Est. Year 1
+                                Revenue</div>
+                            <div id="res-kpi-revenue" class="text-2xl font-bold text-gray-900 dark:text-white">$0K</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+                                Break-even</div>
+                            <div id="res-kpi-breakeven" class="text-2xl font-bold text-gray-900 dark:text-white">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Founder's Vision Analysis -->
+                <div class="bento-card p-8 md:p-10 mt-6 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-900"
+                    id="res-vision-card">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm bg-black dark:bg-white dark:text-black">
+                            💡</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">The Founder's Vision</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-2">
+                                Original Concept
+                            </p>
+                            <p id="res-original-concept"
+                                class="text-lg text-gray-700 dark:text-slate-300 italic border-l-4 border-black dark:border-white pl-4 py-1 leading-relaxed">
+                                <!-- JS Injected -->
+                            </p>
+                        </div>
+                        <div
+                            class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 border border-gray-100 dark:border-slate-700">
+                            <p
+                                class="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-3 text-center">
+                                AI
+                                Strategic Intent Analysis</p>
+                            <div id="res-intent-tags" class="flex flex-wrap gap-2 justify-center">
+                                <!-- JS Injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Problem / Solution / Audience -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bento-card p-6 bg-white dark:bg-slate-900">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div
+                                class="w-8 h-8 bg-gray-100 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest">
+                                Problem</h4>
+                        </div>
+                        <p id="res-problem" class="text-gray-700 dark:text-slate-300 leading-relaxed text-sm"></p>
+                    </div>
+                    <div class="bento-card p-6 bg-white dark:bg-slate-900">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div
+                                class="w-8 h-8 bg-gray-100 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest">
+                                Solution</h4>
+                        </div>
+                        <p id="res-solution" class="text-gray-700 dark:text-slate-300 leading-relaxed text-sm"></p>
+                    </div>
+                    <div class="bento-card p-6 bg-white dark:bg-slate-900">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div
+                                class="w-8 h-8 bg-gray-100 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest">
+                                Target Audience</h4>
+                        </div>
+                        <p id="res-audience" class="text-gray-700 dark:text-slate-300 leading-relaxed text-sm"></p>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Financial Projections Chart + Score Ring -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Revenue Projection Chart -->
+                    <div class="lg:col-span-2 bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Revenue Projection (36 months)
+                            </h3>
+                            <span class="text-xs text-gray-400 dark:text-slate-500 font-mono">MRR / Cumulative</span>
+                        </div>
+                        <div class="relative h-48 w-full" id="res-chart-container">
+                            <svg id="res-revenue-chart" class="w-full h-full overflow-visible" viewBox="0 0 500 180">
+                                <!-- Grid Lines -->
+                                <line x1="40" y1="10" x2="40" y2="160" stroke="#F3F4F6" dark:stroke="#374151"
+                                    stroke-width="1" />
+                                <line x1="40" y1="160" x2="490" y2="160" stroke="#E5E7EB" dark:stroke="#374151"
+                                    stroke-width="1" />
+                                <line x1="40" y1="120" x2="490" y2="120" stroke="#F3F4F6" dark:stroke="#374151"
+                                    stroke-width="1" stroke-dasharray="4" />
+                                <line x1="40" y1="80" x2="490" y2="80" stroke="#F3F4F6" dark:stroke="#374151"
+                                    stroke-width="1" stroke-dasharray="4" />
+                                <line x1="40" y1="40" x2="490" y2="40" stroke="#F3F4F6" dark:stroke="#374151"
+                                    stroke-width="1" stroke-dasharray="4" />
+
+                                <!-- Y Axis Labels -->
+                                <text x="35" y="164" text-anchor="end" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px">$0</text>
+                                <text x="35" y="124" text-anchor="end" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px" id="res-y1">$50K</text>
+                                <text x="35" y="84" text-anchor="end" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px" id="res-y2">$100K</text>
+                                <text x="35" y="44" text-anchor="end" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px" id="res-y3">$150K</text>
+
+                                <!-- X Axis Labels -->
+                                <text x="40" y="175" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px">M0</text>
+                                <text x="190" y="175" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px">M12</text>
+                                <text x="340" y="175" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px">M24</text>
+                                <text x="478" y="175" class="fill-gray-400 dark:fill-slate-500"
+                                    style="font-size:9px">M36</text>
+
+                                <!-- Area + Line (dynamically set by JS) -->
+                                <defs>
+                                    <linearGradient id="revGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#000000;stop-opacity:0.2" />
+                                        <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                                <path id="res-rev-area" fill="url(#revGrad)" />
+                                <path id="res-rev-line" fill="none" stroke="#111827" stroke-width="2.5"
+                                    stroke-linecap="round" class="growth-line" />
+
+                                <!-- Monthly bars (thin) -->
+                                <g id="res-rev-bars"></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Score Ring + Market Potential -->
+                    <div class="space-y-6">
+                        <div class="bento-card p-6 text-center bg-white dark:bg-slate-900">
+                            <h4
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-4">
+                                AI Success Score
+                            </h4>
+                            <div class="flex flex-col items-center">
+                                <div class="relative w-32 h-32 flex items-center justify-center mb-4">
+                                    <svg class="w-full h-full transform -rotate-90">
+                                        <circle cx="64" cy="64" r="56" stroke="#F3F4F6" dark:stroke="#374151"
+                                            stroke-width="8" fill="transparent"></circle>
+                                        <circle id="res-score-circle" cx="64" cy="64" r="56" stroke="#111827"
+                                            dark:stroke="#ffffff" stroke-width="8" fill="transparent"
+                                            stroke-dasharray="352" stroke-dashoffset="352" stroke-linecap="round"
+                                            class="transition-all duration-1000"></circle>
+                                    </svg>
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                        <span id="res-score-val"
+                                            class="text-3xl font-bold text-gray-900 dark:text-white">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bento-card p-6 bg-white dark:bg-slate-900">
+                            <h4
+                                class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-3">
+                                Market Potential
+                            </h4>
+                            <div class="w-full bg-gray-100 dark:bg-slate-800 rounded-full h-3 mb-3 overflow-hidden">
+                                <div id="res-market-bar"
+                                    class="bg-black dark:bg-white h-full rounded-full transition-all duration-1000"
+                                    style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 dark:text-slate-400 font-medium">
+                                <span>Low</span>
+                                <span id="res-market-val" class="text-gray-900 dark:text-white">0%</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: SWOT Analysis -->
+                <div class="bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">SWOT Analysis</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="res-swot">
+                        <div
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
+                            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span
+                                    class="w-6 h-6 rounded-md bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-900 dark:text-white text-xs font-bold">S</span>
+                                Strengths
+                            </h4>
+                            <ul id="res-swot-s" class="text-sm text-gray-700 dark:text-slate-300 space-y-1.5"></ul>
+                        </div>
+                        <div
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
+                            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span
+                                    class="w-6 h-6 rounded-md bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-900 dark:text-white text-xs font-bold">W</span>
+                                Weaknesses
+                            </h4>
+                            <ul id="res-swot-w" class="text-sm text-gray-700 dark:text-slate-300 space-y-1.5"></ul>
+                        </div>
+                        <div
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
+                            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span
+                                    class="w-6 h-6 rounded-md bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-900 dark:text-white text-xs font-bold">O</span>
+                                Opportunities
+                            </h4>
+                            <ul id="res-swot-o" class="text-sm text-gray-700 dark:text-slate-300 space-y-1.5"></ul>
+                        </div>
+                        <div
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
+                            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span
+                                    class="w-6 h-6 rounded-md bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-900 dark:text-white text-xs font-bold">T</span>
+                                Threats
+                            </h4>
+                            <ul id="res-swot-t" class="text-sm text-gray-700 dark:text-slate-300 space-y-1.5"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: Competitor Landscape + Revenue Model -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Competitor Bars -->
+                    <div class="bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Competitor Landscape</h3>
+                        <div class="space-y-4" id="res-competitors">
+                            <!-- JS Injected -->
+                        </div>
+                    </div>
+
+                    <!-- Revenue Model + Unit Economics -->
+                    <div class="bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Unit Economics</h3>
+                        <div class="space-y-5">
+                            <div>
+                                <h4
+                                    class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-2">
+                                    Revenue Model
+                                </h4>
+                                <div id="res-revenue-model"
+                                    class="bg-gray-50 dark:bg-slate-800 p-3 rounded-lg text-gray-800 dark:text-slate-200 font-semibold text-center border border-gray-100 dark:border-slate-700 text-sm">
+                                    Subscription SaaS</div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div
+                                    class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
+                                    <div class="text-xs text-gray-400 dark:text-slate-500 font-bold uppercase mb-1">CAC
+                                    </div>
+                                    <div id="res-cac" class="text-lg font-bold text-gray-900 dark:text-white">$0</div>
+                                </div>
+                                <div
+                                    class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
+                                    <div class="text-xs text-gray-400 dark:text-slate-500 font-bold uppercase mb-1">LTV
+                                    </div>
+                                    <div id="res-ltv" class="text-lg font-bold text-gray-900 dark:text-white">$0</div>
+                                </div>
+                                <div
+                                    class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
+                                    <div class="text-xs text-gray-400 dark:text-slate-500 font-bold uppercase mb-1">
+                                        LTV:CAC</div>
+                                    <div id="res-ltv-cac" class="text-lg font-bold text-gray-900 dark:text-white">$0x
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
+                                    <div class="text-xs text-gray-400 dark:text-slate-500 font-bold uppercase mb-1">
+                                        Gross Margin</div>
+                                    <div id="res-margin" class="text-lg font-bold text-gray-900 dark:text-white">0%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: Growth Roadmap (Expanded) -->
+                <div class="bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-8">Growth Roadmap</h3>
+                    <div class="relative pl-8 border-l-2 border-gray-200 dark:border-slate-700 space-y-10"
+                        id="res-roadmap">
+                        <!-- JS Injected Roadmap Items -->
+                    </div>
+                </div>
+
+                <!-- SECTION 7: Suggested Team -->
+                <div class="bento-card p-6 md:p-8 bg-white dark:bg-slate-900">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Suggested Founding Team</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="res-team">
+                        <!-- JS Injected -->
+                    </div>
+                </div>
+
+                <!-- SECTION 8: Key Risks -->
+                <div class="bento-card p-6 md:p-8 bg-gray-900 text-white dark:bg-slate-900 dark:text-white">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Key Risks & Mitigations</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="res-risks">
+                        <!-- JS Injected -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Feature: Competitor War Room Ticker -->
+            <div class="fixed bottom-0 left-0 right-0 bg-black text-white py-2 z-40 translate-y-full transition-transform duration-500"
+                id="competitor-ticker-container">
+                <div class="flex items-center gap-4 max-w-7xl mx-auto px-4 overflow-hidden">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                        </span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-white line-clamp-1">Live Market
+                            Intel</span>
+                    </div>
+                    <div class="flex-1 overflow-hidden relative h-6">
+                        <div id="ticker-content"
+                            class="whitespace-nowrap absolute top-0 left-0 animate-marquee text-sm font-mono text-gray-300">
+                            <!-- JS Injected -->
+                        </div>
+                    </div>
+                    <button onclick="toggleTicker()" class="text-gray-500 hover:text-white pb-1">&times;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: FEATURES -->
+        <section id="page-features"
+            class="page-container hidden-page w-full max-w-6xl mb-24 mx-auto flex flex-col items-center">
+
+            <!-- Hero -->
+            <div class="text-center mb-20 max-w-3xl mx-auto pt-10">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
+                    From Zero to One,<br>
+                    <span class="text-gray-900 dark:text-white">Powered by
+                        Data.</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed">
+                    StartupBrain isn't just a generator. It's a comprehensive operating system that validates, models,
+                    and stress-tests your business idea against real-world market constraints.
+                </p>
+            </div>
+
+            <!-- Core Features Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-32">
+                <!-- Feature 1: Business Architect -->
+                <div class="bento-card p-8 col-span-1 md:col-span-2 bg-white dark:bg-slate-900">
+                    <div
+                        class="w-12 h-12 bg-gray-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        🏗️</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">AI Business Architect</h3>
+                    <p class="text-gray-600 dark:text-slate-400 mb-6">
+                        Generates a 15-page investor-grade business plan in seconds. Covering executive summary,
+                        problem/solution fit, go-to-market strategy, and operational roadmap.
+                    </p>
+                    <div class="flex gap-2">
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-lg text-xs font-semibold text-gray-600 dark:text-slate-300">Lean
+                            Canvas</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-lg text-xs font-semibold text-gray-600 dark:text-slate-300">SWOT</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-lg text-xs font-semibold text-gray-600 dark:text-slate-300">PESTEL</span>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Financial Oracle -->
+                <div class="bento-card p-8 bg-white dark:bg-slate-900">
+                    <div
+                        class="w-12 h-12 bg-gray-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        💰</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Financial Oracle</h3>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">
+                        Automated 5-Year P&L, Cash Flow, and Balance Sheet projections based on industry benchmarks.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Market Scanner -->
+                <div class="bento-card p-8 bg-white dark:bg-slate-900">
+                    <div
+                        class="w-12 h-12 bg-gray-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        📡</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Market Scanner</h3>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">
+                        Real-time competitor tracking and niche analysis using live data APIs. Know your enemy.
+                    </p>
+                </div>
+
+                <!-- Feature 4: Investor Deck -->
+                <div class="bento-card p-8 col-span-1 md:col-span-2 bg-white dark:bg-slate-900">
+                    <div
+                        class="w-12 h-12 bg-gray-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        📊</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Pitch Deck Builder</h3>
+                    <p class="text-gray-600 dark:text-slate-400 mb-6">
+                        Export a professionally designed 10-slide pitch deck (PDF/PPT) populated with your unique data,
+                        charts, and narrative arc. Ready for VC inboxes.
+                    </p>
+                    <div class="flex gap-2">
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-lg text-xs font-semibold text-gray-600 dark:text-slate-300">Seequoia
+                            Format</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-slate-800 rounded-lg text-xs font-semibold text-gray-600 dark:text-slate-300">YC
+                            Format</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dives -->
+            <div class="w-full space-y-32 mb-32">
+                <!-- Deep Dive 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Data > Opinion</h3>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-6">
+                            Most business plans are creative writing exercises. Ours are data science projects. We
+                            ingest millions of data points from public markets, search trends, and social signals to
+                            validate your assumptions.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-slate-300">
+                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Live CAC/LTV benchmarks
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-slate-300">
+                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Competitor traffic analysis
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-slate-300">
+                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Keyword volume forecasting
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 relative">
+                        <div class="absolute inset-0 bg-white dark:bg-slate-800 blur-[100px] opacity-0"></div>
+                        <div
+                            class="relative bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-2xl border border-gray-100 dark:border-slate-700">
+                            <!-- Mock Charts -->
+                            <div class="flex items-end gap-2 h-40 mb-4">
+                                <div class="w-1/5 bg-gray-200 dark:bg-slate-700 rounded-t h-[40%]"></div>
+                                <div class="w-1/5 bg-gray-300 dark:bg-slate-600 rounded-t h-[60%]"></div>
+                                <div class="w-1/5 bg-gray-400 dark:bg-slate-500 rounded-t h-[50%]"></div>
+                                <div class="w-1/5 bg-gray-500 dark:bg-slate-400 rounded-t h-[80%]"></div>
+                                <div class="w-1/5 bg-gray-600 dark:bg-slate-300 rounded-t h-[90%]"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><span>Q5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deep Dive 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Your AI Co-Founder</h3>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-6">
+                            Being a solo founder is lonely. Our AI persona ("The Skeptic") is designed to challenge your
+                            ideas, find holes in your logic, and prepare you for tough investor meetings.
+                        </p>
+                        <p class="text-lg text-gray-600 dark:text-slate-400">
+                            It never sleeps, never complains, and is brutally honest about your odds of success.
+                        </p>
+                    </div>
+                    <div class="flex-1 relative">
+                        <div class="absolute inset-0 bg-white dark:bg-slate-800 blur-[100px] opacity-0"></div>
+                        <div
+                            class="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-100 dark:border-slate-700 max-w-sm mx-auto transform -rotate-2">
+                            <div class="flex gap-4 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">🤖
+                                </div>
+                                <div class="bg-gray-50 dark:bg-slate-700 p-3 rounded-2xl rounded-tl-none">
+                                    <p class="text-sm text-gray-700 dark:text-slate-300">Your CAC is $50 but LTV is only
+                                        $40. How do you plan to survive?</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 justify-end">
+                                <div class="bg-black text-white p-3 rounded-2xl rounded-tr-none">
+                                    <p class="text-sm">We're pivoting to B2B enterprise sales.</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">👤
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="w-full text-center mb-20">
+                <h2 class="text-3xl font-bold mb-12 text-gray-900 dark:text-white">Who is this for?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <div
+                        class="p-8 rounded-3xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 hover:border-black dark:hover:border-white transition-colors group">
+                        <h3
+                            class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
+                            Solo Founders</h3>
+                        <p class="text-gray-500 dark:text-slate-400 text-sm">Validate ideas in minutes before quitting
+                            your day job. Save months of wasted engineering time.</p>
+                    </div>
+                    <div
+                        class="p-8 rounded-3xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 hover:border-black dark:hover:border-white transition-colors group">
+                        <h3
+                            class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
+                            Incubators</h3>
+                        <p class="text-gray-500 dark:text-slate-400 text-sm">Screen 100x more applicants by
+                            standardizing the initial business audit process.</p>
+                    </div>
+                    <div
+                        class="p-8 rounded-3xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 hover:border-black dark:hover:border-white transition-colors group">
+                        <h3
+                            class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
+                            Agencies</h3>
+                        <p class="text-gray-500 dark:text-slate-400 text-sm">Upsell clients with "Strategy as a
+                            Service". Generate white-labeled roadmaps for every lead.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer CTA -->
+            <div class="text-center">
+                <button onclick="navigateTo('demo')"
+                    class="px-8 py-4 bg-black hover:bg-gray-800 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                    Start Building for Free
+                </button>
+                <p class="mt-4 text-sm text-gray-400">No credit card required</p>
+            </div>
+
+        </section>
+
+
+        <!-- PAGE 5: ABOUT -->
+        <section id="page-about"
+            class="page-container hidden-page transition-opacity duration-500 flex flex-col items-center">
+            <div class="max-w-4xl mx-auto pt-10 text-center">
+                <div class="mb-16">
+                    <h2 class="text-4xl font-bold mb-6 text-gray-900 tracking-tight">The Future of <br>Founder
+                        Intelligence</h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                        StartupBrain AI was born from a simple realization: entrepreneurs spend too much time
+                        overthinking and not enough time executing.
+                    </p>
+                    <div class="flex justify-center gap-6">
+                        <a onclick="alert('Whitepaper v2.0 is being drafted. Join the waitlist!')"
+                            class="text-black font-bold border-b-2 border-black pb-1 hover:text-gray-600 hover:border-gray-600 transition-all cursor-pointer">Read
+                            Whitepaper</a>
+                    </div>
+                </div>
+
+                <div class="bento-card p-10 bg-gray-50 dark:bg-slate-900 text-left w-full">
+                    <h3 class="text-xl font-bold mb-8 text-gray-900 dark:text-white text-center">Product Roadmap</h3>
+                    <div class="space-y-10 max-w-lg mx-auto">
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Q1 2024: Alpha Launch</h4>
+                            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Initial beta of the Startup
+                                Generator Engine and basic
+                                analytics.</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="font-bold text-gray-900 dark:text-white text-sm">Q3 2024: Market Live Feed</h4>
+                            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Connecting AI predictions to
+                                real-time stock and
+                                venture market data.</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="font-bold text-gray-400 dark:text-slate-500 text-sm">2025: VC Matching</h4>
+                            <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">Automated pitch deck generation
+                                and matching with
+                                active angel investors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center bg-black p-16 rounded-3xl mt-20 max-w-5xl mx-auto w-full">
+                <h3 class="text-3xl font-bold mb-4 text-white">Ready to start?</h3>
+                <p class="text-gray-400 mb-10 max-w-xl mx-auto">Don't let your next multi-billion dollar idea stay as a
+                    note in your phone. Build it today with AI.</p>
+                <button onclick="navigateTo('demo')"
+                    class="bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-full font-bold text-lg transition-colors shadow-lg">
+                    Launch Generator
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="border-t border-gray-100 dark:border-slate-800 py-12 px-6 bg-white dark:bg-slate-900 mt-20 transition-colors duration-300">
+        <div class="flex flex-col items-center gap-6 max-w-7xl mx-auto text-center">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-black dark:bg-white rounded flex items-center justify-center">
+                    <svg class="w-3 h-3 text-white dark:text-black" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                        <path d="M12 2a10 10 0 0 1 10 10h-7.5l-3.5 3.5-3.5-3.5H2" />
+                        <path d="M7.5 15.5 10 18l5-5" />
+                    </svg>
+                </div>
+                <span class="font-bold text-gray-900 dark:text-white text-sm">StartupBrain AI</span>
+            </div>
+
+            <p class="text-xs text-gray-400 dark:text-slate-500">
+                © 2026 StartupBrain AI. Built for the Future Founder.
+            </p>
+
+            <div class="flex gap-6">
+                <a onclick="alert('Privacy Policy coming soon!')"
+                    class="text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer text-xs font-medium transition-colors">Privacy</a>
+                <a onclick="alert('Terms of Service coming soon!')"
+                    class="text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer text-xs font-medium transition-colors">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feature: Co-Founder Chat Widget -->
+    <div id="cofounder-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
+        <!-- Chat Window (Hidden by default) -->
+        <div id="cofounder-chat"
+            class="bg-white rounded-2xl shadow-2xl w-80 mb-2 border border-gray-200 transform origin-bottom-right scale-0 transition-transform duration-300 pointer-events-auto">
+            <div class="p-4 bg-black rounded-t-2xl flex justify-between items-center text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm">🤖</div>
+                    <div>
+                        <h4 class="font-bold text-sm">AI Co-Founder</h4>
+                        <p class="text-[10px] text-gray-400 opacity-75">Online • Reply time: 1s</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white/70 hover:text-white"><svg class="w-4 h-4" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg></button>
+            </div>
+            <div id="chat-messages" class="h-64 overflow-y-auto p-4 space-y-3 bg-gray-50 scrollbar-hide">
+                <div class="flex gap-2">
+                    <div
+                        class="w-6 h-6 rounded-full bg-gray-100 flex-shrink-0 text-[10px] flex items-center justify-center">
+                        🤖</div>
+                    <div
+                        class="bg-white p-3 rounded-2xl rounded-tl-none text-xs text-gray-700 shadow-sm border border-gray-100">
+                        I've analyzed your idea. What aspect should we stress-test first?
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 border-t border-gray-100 bg-white rounded-b-2xl">
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <button onclick="sendMsg('Roast my idea')"
+                        class="whitespace-nowrap px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-[10px] font-bold text-gray-700 transition-colors">🔥
+                        Roast It</button>
+                    <button onclick="sendMsg('How do we scale?')"
+                        class="whitespace-nowrap px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-[10px] font-bold text-gray-700 transition-colors">🚀
+                        Scale</button>
+                    <button onclick="sendMsg('Investor pitch?')"
+                        class="whitespace-nowrap px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-[10px] font-bold text-gray-700 transition-colors">💰
+                        Funding</button>
+                </div>
+                <div class="relative">
+                    <input type="text" id="chat-input" placeholder="Ask anything..."
+                        class="w-full bg-gray-50 border-0 rounded-xl px-4 py-2 text-xs focus:ring-1 focus:ring-black"
+                        onkeypress="if(event.key === 'Enter') sendMsg(this.value)">
+                    <button onclick="sendMsg(document.getElementById('chat-input').value)"
+                        class="absolute right-2 top-1.5 text-black hover:scale-110 transition-transform">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAB -->
+        <button onclick="toggleChat()"
+            class="pointer-events-auto bg-black text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform group relative">
+            <span
+                class="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-black animate-pulse"></span>
+            <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                </path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Logic -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

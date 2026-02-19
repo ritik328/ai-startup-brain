@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features — StartupBrain AI</title>
+    <meta name="description"
+        content="Explore StartupBrain AI's powerful features: AI Market Analysis, Strategy Builder, Growth Prediction, Branding Generator, Risk Assessment, and more.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .revenue-bar {
+            width: 15%;
+            background: var(--gradient-accent);
+            border-radius: 6px 6px 0 0;
+            transition: height 1.5s ease;
+            height: 0;
+            position: relative;
+        }
+
+        .revenue-bar::after {
+            content: attr(data-year);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .revenue-bar::before {
+            content: attr(data-value);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 1s 1s;
+        }
+
+        .revenue-graph.active .revenue-bar::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-brain me-2" style="color: var(--accent);"></i>
+                StartupBrain AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="demo.html">Demo</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="features.html">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="demo.html" class="btn btn-primary-gradient">Try Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <section class="text-center pt-5 mt-5">
+        <div class="container reveal">
+            <span class="badge-subtle mb-3 d-inline-block">Platform Capabilities</span>
+            <h1 class="display-5 fw-bold mb-3">Powerful Tools Using <span class="text-gradient">AI Models</span></h1>
+            <p class="lead mx-auto" style="max-width: 600px; color: var(--text-secondary);">
+                Our platform uses advanced logic to simulate real-world business scenarios, giving you a comprehensive
+                toolkit for startup planning.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-chart-pie fa-2x mb-3" style="color: var(--accent);"></i>
+                        <h4>AI Market Analysis</h4>
+                        <p class="small">Simulates how global trends and industry shifts affect your startup's potential
+                            success.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-chess-knight fa-2x mb-3" style="color: #F59E0B;"></i>
+                        <h4>Strategy Builder</h4>
+                        <p class="small">Creates a structured execution roadmap tailored to your specific industry and
+                            budget.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-arrow-trend-up fa-2x mb-3" style="color: #10B981;"></i>
+                        <h4>Growth Prediction</h4>
+                        <p class="small">Visualizes long-term success possibilities using simulated revenue data.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-fingerprint fa-2x mb-3" style="color: #8B5CF6;"></i>
+                        <h4>Branding Generator</h4>
+                        <p class="small">Instantly creates unique startup names and taglines aligned with your concept.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-shield-alt fa-2x mb-3" style="color: #EF4444;"></i>
+                        <h4>Risk Assessment</h4>
+                        <p class="small">Highlights possible challenges and competition levels in your chosen market.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="glass-card h-100">
+                        <i class="fas fa-microchip fa-2x mb-3" style="color: var(--text-secondary);"></i>
+                        <h4>Idea Evaluation</h4>
+                        <p class="small">Measures the clarity, strength, and scalability of your startup idea.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANALYTICS DEMO -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <h2 class="mb-3">AI Business <span class="text-gradient">Intelligence</span></h2>
+                <p style="color: var(--text-secondary);">Visualizing the future of your business.</p>
+            </div>
+
+            <div class="row align-items-end g-5">
+                <!-- Revenue Graph -->
+                <div class="col-lg-6 reveal">
+                    <div class="glass-card">
+                        <h5 class="mb-4"><i class="fas fa-chart-column me-2" style="color: #10B981;"></i> 5-Year Revenue
+                            Projection</h5>
+                        <div class="revenue-graph d-flex justify-content-between align-items-end"
+                            style="height: 250px; padding-bottom: 30px;">
+                            <div class="revenue-bar" data-height="15%" data-year="Y1" data-value="$12k"></div>
+                            <div class="revenue-bar" data-height="35%" data-year="Y2" data-value="$45k"></div>
+                            <div class="revenue-bar" data-height="55%" data-year="Y3" data-value="$120k"></div>
+                            <div class="revenue-bar" data-height="75%" data-year="Y4" data-value="$380k"></div>
+                            <div class="revenue-bar" data-height="95%" data-year="Y5" data-value="$1.2M"></div>
+                        </div>
+                        <p class="mt-4 small text-center" style="color: var(--text-secondary);">
+                            *Simulated projection based on aggressive scaling model.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Risk & Score -->
+                <div class="col-lg-6 reveal">
+                    <div class="glass-card mb-4">
+                        <h5 class="mb-3"><i class="fas fa-exclamation-triangle me-2" style="color: #F59E0B;"></i>
+                            Competitor Risk Meter</h5>
+                        <div class="progress" style="height: 20px; border-radius: 50px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                style="width: 65%; background: #F59E0B;">Medium High</div>
+                        </div>
+                        <p class="small mt-2" style="color: var(--text-secondary);">Market saturation is moderate.
+                            Differentiation is key.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <h5 class="mb-3"><i class="fas fa-star me-2" style="color: var(--accent);"></i> Idea Strength
+                            Logic</h5>
+                        <p class="small mb-3" style="color: var(--text-secondary);">
+                            Our system calculates the strength score based on three key factors:
+                        </p>
+                        <ul class="list-unstyled small ps-2">
+                            <li class="mb-2"><span class="fw-bold" style="color: var(--accent);">40%</span> — Market
+                                Demand & Timing</li>
+                            <li class="mb-2"><span class="fw-bold" style="color: var(--accent);">30%</span> —
+                                Scalability Potential</li>
+                            <li class="mb-2"><span class="fw-bold" style="color: var(--accent);">30%</span> — Execution
+                                Complexity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center small" style="color: var(--text-secondary);">
+            &copy; 2026 StartupBrain AI. <a href="index.html" class="ms-2" style="color: var(--text-secondary);">Back to
+                Home</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
