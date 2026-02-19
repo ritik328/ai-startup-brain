@@ -44,7 +44,123 @@
 
 <body class="antialiased bg-white dark:bg-slate-900 transition-colors duration-300 min-h-screen flex flex-col">
     <!-- BACKGROUND ANIMATION LAYER -->
-    <div id="bg-canvas-container" class="fixed inset-0 pointer-events-none z-[-2] opacity-100"></div>
+    <!-- BACKGROUND ANIMATION LAYER -->
+    <div id="bg-socket-container"
+        class="fixed inset-0 pointer-events-none z-[-2] flex items-center justify-center overflow-hidden">
+        <div class="socket transform scale-[2.0] md:scale-[3.0]">
+            <div class="gel center-gel">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c1 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c2 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c3 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c4 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c5 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c6 r1">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c7 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c8 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c9 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c10 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c11 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c12 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c13 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c14 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c15 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c16 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c17 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c18 r2">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c19 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c20 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c21 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c22 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c23 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c24 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c25 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c26 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c28 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c29 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c30 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c31 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c32 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c33 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c34 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c35 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c36 r3">
+                <div class="circle"></div>
+            </div>
+            <div class="gel c37 r3">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
     <div id="bg-overlay"
         class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(circle_at_center,transparent_0%,white_80%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#0F172A_80%)] opacity-10">
     </div>
@@ -973,14 +1089,57 @@
             </div>
 
             <!-- Loading State -->
-            <div id="demo-loading-view" class="hidden-page text-center py-32">
-                <div class="flex flex-col items-center">
-                    <div class="loader-ring mb-8"></div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" id="loading-status">Analyzing
-                        Market Trends...</h3>
-                    <p class="text-gray-500 dark:text-slate-400" id="loading-sub">Accessing global startup databases
-                    </p>
+            <!-- Loading State -->
+            <div id="demo-loading-view" class="hidden-page text-center py-32 flex flex-col items-center justify-center">
+                <!-- AI Brain Loader -->
+                <div class="loaders-container mb-12 transform scale-75 md:scale-100">
+                    <div class="loaders">
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                        <div class="loader"></div>
+                    </div>
+                    <div class="loadersB">
+                        <div class="loaderA">
+                            <div class="ball0"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball1"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball2"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball3"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball4"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball5"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball6"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball7"></div>
+                        </div>
+                        <div class="loaderA">
+                            <div class="ball8"></div>
+                        </div>
+                    </div>
                 </div>
+
+                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white animate-pulse" id="loading-status">
+                    Initializing AI Core...</h3>
+                <p class="text-gray-500 dark:text-slate-400 text-sm" id="loading-sub">Connecting to neural strategy
+                    engine</p>
             </div>
 
             <!-- Results State -->

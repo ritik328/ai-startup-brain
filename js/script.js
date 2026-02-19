@@ -331,12 +331,16 @@ if (generateBtn) {
 
         let stepIdx = 0;
         const interval = setInterval(() => {
-            status.innerText = steps[stepIdx].s;
-            sub.innerText = steps[stepIdx].sub;
-            stepIdx++;
-            if (stepIdx === steps.length) {
+            if (stepIdx < steps.length) {
+                status.innerText = steps[stepIdx].s;
+                sub.innerText = steps[stepIdx].sub;
+                stepIdx++;
+            } else {
                 clearInterval(interval);
-                setTimeout(renderResult, 500, idea, ind, bud, document.getElementById('input-currency').value);
+                // Slight delay before showing results for smooth transition
+                setTimeout(() => {
+                    renderResult(idea, ind, bud, document.getElementById('input-currency').value);
+                }, 500);
             }
         }, 800);
     };
@@ -1151,14 +1155,11 @@ const ParticleApp = {
 };
 
 // Start the engine
+// Start the engine
 function initBackground() {
-    ParticleApp.setup();
-    ParticleApp.start();
-    const frame = () => {
-        ParticleApp.evolve();
-        requestAnimationFrame(frame);
-    };
-    frame();
+    // Background replaced with CSS Animation (Socket)
+    // ParticleApp.setup();
+    // ParticleApp.start();
 }
 
 // --- NEW FEATURE: Export PDF ---
