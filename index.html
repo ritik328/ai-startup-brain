@@ -173,20 +173,28 @@
         </div>
     </nav>
 
+    <!-- HERO GLOW EFFECTS -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none z-[-1] opacity-50 dark:opacity-30 mix-blend-screen">
+    </div>
+    <div
+        class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none z-[-1] opacity-50 dark:opacity-20">
+    </div>
+
     <!-- MAIN CONTENT -->
-    <main class="pt-32 pb-20 max-w-6xl mx-auto px-6 flex-grow w-full">
+    <main class="pt-32 pb-20 max-w-6xl mx-auto px-6 flex-grow w-full relative z-10">
 
         <!-- PAGE 1: HOME -->
         <section id="page-home" class="page-container transition-opacity duration-500 flex flex-col items-center">
             <!-- Hero -->
             <div class="text-center mb-20 max-w-4xl mx-auto pt-10">
                 <div class="mb-8 flex justify-center animate-in fade-in slide-in-bottom">
-                    <div class="pill-badge cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors border border-gray-200 dark:border-slate-700"
+                    <div class="pill-badge cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm"
                         onclick="navigateTo('features')">
-                        <span class="mr-2 font-bold">★</span>
-                        <span class="font-bold text-gray-900 dark:text-white">v2.1:
+                        <span class="mr-2 font-bold text-blue-600 dark:text-blue-400">★</span>
+                        <span class="font-bold text-slate-900 dark:text-white text-sm tracking-tight">v2.1:
                             Now with Financial Modeling</span>
-                        <svg class="w-4 h-4 ml-1 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                        <svg class="w-4 h-4 ml-1 text-slate-900 dark:text-white" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
@@ -195,16 +203,17 @@
                 </div>
 
                 <h1
-                    class="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-gray-900 dark:text-white animate-in fade-in slide-in-bottom delay-100">
+                    class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-[1.1] text-slate-900 dark:text-white animate-in fade-in slide-in-bottom delay-100">
                     Instantly generate a <br>
-                    <span>data-backed
+                    <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">data-backed
                         startup plan.</span>
                 </h1>
 
                 <p
-                    class="text-xl text-gray-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200">
-                    Turn a raw idea into a <strong>structured business model</strong>, <strong>growth roadmap</strong>,
-                    and <strong>investor pitch deck</strong> in 30 seconds.
+                    class="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200 tracking-tight">
+                    Turn a raw idea into a <strong class="text-slate-900 dark:text-slate-200">structured business
+                        model</strong>, <strong class="text-slate-900 dark:text-slate-200">growth roadmap</strong>,
+                    and <strong class="text-slate-900 dark:text-slate-200">investor pitch deck</strong> in 30 seconds.
                 </p>
 
                 <!-- CTA Buttons -->
@@ -220,516 +229,586 @@
                     </button>
                 </div>
 
-                <p class="mt-8 text-xs text-gray-400 dark:text-slate-500 font-medium">
-                    * AI outputs are simulated based on industry patterns.
-                </p>
-            </div>
-
-            <!-- Trusted By / Stats Strip (Centered) -->
-            <div
-                class="w-full border-y border-gray-100 dark:border-slate-800 py-10 mb-20 bg-gray-50/50 dark:bg-slate-800/20 rounded-2xl">
-                <div class="max-w-4xl mx-auto text-center">
-                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by 12,000+
-                        Founders</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center justify-center">
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="12450">12,450+</span>
-                            <span class="text-sm text-gray-500 dark:text-slate-400">Ideas Generated</span>
+                <!-- HERO VISUAL: Live Terminal (Requestly Style) -->
+                <div
+                    class="relative w-full max-w-3xl mx-auto rounded-xl shadow-2xl bg-[#0F172A] border border-slate-700 overflow-hidden text-left font-mono text-sm leading-relaxed animate-in fade-in slide-in-bottom delay-300 group">
+                    <!-- Terminal Bar -->
+                    <div class="bg-slate-800/50 border-b border-slate-700 p-3 flex items-center gap-2">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                         </div>
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="94">94%</span>
-                            <span class="text-sm text-gray-500 dark:text-slate-400">Accuracy Rate</span>
+                        <div class="ml-4 text-xs text-slate-400 font-semibold tracking-wide">startupbrain-ai — -zsh —
+                            80x24</div>
+                    </div>
+                    <!-- Terminal Content -->
+                    <div class="p-6 text-slate-300 h-64 overflow-y-auto" id="hero-terminal">
+                        <div class="mb-2">
+                            <span class="text-green-400">➜</span> <span class="text-blue-400">~</span> <span
+                                class="text-slate-100">startupbrain analyze --idea "Eco-friendly architectural materials
+                                marketplace"</span>
                         </div>
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="5200">5,200+</span>
-                            <span class="text-sm text-gray-500 dark:text-slate-400">Business Models</span>
+                        <div class="mb-2">
+                            <span class="text-slate-500">[10:42:01]</span> <span class="text-blue-400">ℹ</span> <span
+                                class="text-slate-300">Initializing market scan...</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-slate-500">[10:42:02]</span> <span class="text-green-400">✔</span> <span
+                                class="text-slate-300">Found </span><span class="text-yellow-400">14,203</span><span
+                                class="text-slate-300"> relevant data points.</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-slate-500">[10:42:02]</span> <span class="text-blue-400">ℹ</span> <span
+                                class="text-slate-300">Calculating Tam/Sam/Som...</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-slate-500">[10:42:03]</span> <span class="text-green-400">✔</span> <span
+                                class="text-slate-300">Projected TAM: </span><span class="text-green-400">$4.2B</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="text-slate-500">[10:42:03]</span> <span class="text-blue-400">ℹ</span> <span
+                                class="text-slate-300">Identifying competitors...</span>
+                        </div>
+                        <div class="mb-2 pl-4 border-l-2 border-slate-700">
+                            <div class="text-slate-400">1. GreenBuild (Series B)</div>
+                            <div class="text-slate-400">2. EcoMat (Seed)</div>
+                            <div class="text-slate-400">3. SustainableSupply (Bootstrapped)</div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-green-400">➜</span> <span class="text-blue-400">~</span> <span
+                                class="animate-pulse">_</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- NEW: LIVE MARKET INTELLIGENCE -->
-            <div class="w-full max-w-6xl mb-32"> <!-- Increased margin -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"> <!-- Increased gap -->
-                    <div class="text-left">
-                        <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wide mb-6">
-                            <span class="relative flex h-2 w-2">
-                                <span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white dark:bg-black opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white dark:bg-black"></span>
-                            </span>
-                            Simulated Market Feed
+                <!-- Trusted By / Stats Strip (Centered) -->
+                <div
+                    class="w-full border-y border-gray-100 dark:border-slate-800 py-10 mb-20 bg-gray-50/50 dark:bg-slate-800/20 rounded-2xl">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by 12,000+
+                            Founders</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center justify-center">
+                            <div class="flex flex-col items-center">
+                                <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                    data-target="12450">12,450+</span>
+                                <span class="text-sm text-gray-500 dark:text-slate-400">Ideas Generated</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                    data-target="94">94%</span>
+                                <span class="text-sm text-gray-500 dark:text-slate-400">Accuracy Rate</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
+                                    data-target="5200">5,200+</span>
+                                <span class="text-sm text-gray-500 dark:text-slate-400">Business Models</span>
+                            </div>
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
-                            AI-Projected Niche Analysis.</h2>
-                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
-                            StartupBrain AI correlates 50+ data points to simulate market scenarios:
-                        </p>
-                        <ul class="space-y-4 mb-10 text-gray-600 dark:text-slate-400">
-                            <li class="flex items-center gap-3">
-                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
-                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg></span>
-                                <span><strong>Problem & Solution</strong> validation models</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
-                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg></span>
-                                <span><strong>Revenue & Marketing</strong> strategy simulations</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
-                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg></span>
-                                <span><strong>Growth Roadmap</strong> (Seed to Series A)</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
-                                        class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg></span>
-                                <span><strong>Idea Strength</strong> confidence scoring</span>
-                            </li>
-                        </ul>
-                        <div class="flex flex-col gap-4">
+                    </div>
+                </div>
+
+                <!-- NEW: LIVE MARKET INTELLIGENCE -->
+                <div class="w-full max-w-6xl mb-32"> <!-- Increased margin -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"> <!-- Increased gap -->
+                        <div class="text-left">
                             <div
-                                class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border border-gray-100 dark:border-slate-800 group">
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wide mb-6">
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white dark:bg-black opacity-75"></span>
+                                    <span
+                                        class="relative inline-flex rounded-full h-2 w-2 bg-white dark:bg-black"></span>
+                                </span>
+                                Simulated Market Feed
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
+                                AI-Projected Niche Analysis.</h2>
+                            <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
+                                StartupBrain AI correlates 50+ data points to simulate market scenarios:
+                            </p>
+                            <ul class="space-y-4 mb-10 text-gray-600 dark:text-slate-400">
+                                <li class="flex items-center gap-3">
+                                    <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                            class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg></span>
+                                    <span><strong>Problem & Solution</strong> validation models</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                            class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg></span>
+                                    <span><strong>Revenue & Marketing</strong> strategy simulations</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                            class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg></span>
+                                    <span><strong>Growth Roadmap</strong> (Seed to Series A)</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full"><svg
+                                            class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg></span>
+                                    <span><strong>Idea Strength</strong> confidence scoring</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-col gap-4">
                                 <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-900 dark:text-white group-hover:scale-110 transition-transform">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                    </svg>
+                                    class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors border border-slate-200 dark:border-slate-700/50 group bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+                                    <div
+                                        class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">
+                                            Trend Velocity (Simulated)</h4>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Forecasts potential hype
+                                            cycles based on historical data.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Trend Velocity
-                                        (Simulated)</h4>
-                                    <p class="text-sm text-gray-500 dark:text-slate-400">Forecasts potential hype cycles
-                                        based on historical data.</p>
+                                <div
+                                    class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors border border-slate-200 dark:border-slate-700/50 group bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+                                    <div
+                                        class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">
+                                            Competitor Density</h4>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Estimated saturation
+                                            heatmaps vs. blue ocean opportunities.</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Visual: Live Dashboard -->
+                        <div class="bento-card p-6 bg-black text-white relative overflow-hidden shadow-2xl group">
+
+                            <div class="absolute top-0 left-0 w-full h-1 bg-white">
+                            </div>
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-bold text-sm text-gray-400 uppercase tracking-wider">Market Pulse</h3>
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex h-2 w-2">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                    </span>
+                                    <span class="text-xs text-white font-mono">LIVE</span>
+                                </div>
+                            </div>
+
+                            <!-- Trends Chart -->
+                            <!-- Trends Chart -->
+                            <div class="flex items-end justify-between h-32 gap-2 mb-2 px-2">
+                                <!-- Bar 1: SaaS -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        SaaS:<span class="live-metric">+40%</span></div>
+                                    <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                        style="height: 40%"></div>
+                                </div>
+                                <!-- Bar 2: AI -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        AI:<span class="live-metric">+60%</span></div>
+                                    <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                        style="height: 60%; animation-delay: 0.1s"></div>
+                                </div>
+                                <!-- Bar 3: Bio -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        Bio:<span class="live-metric">+85%</span></div>
+                                    <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
+                                        style="height: 85%; animation-delay: 0.2s"></div>
+                                </div>
+                                <!-- Bar 4: Fin -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        Fin:<span class="live-metric">+50%</span></div>
+                                    <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                        style="height: 50%; animation-delay: 0.3s"></div>
+                                </div>
+                                <!-- Bar 5: Eco -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        Eco:<span class="live-metric">+70%</span></div>
+                                    <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                        style="height: 70%; animation-delay: 0.4s"></div>
+                                </div>
+                                <!-- Bar 6: Auto -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        Auto:<span class="live-metric">+90%</span></div>
+                                    <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
+                                        style="height: 90%; animation-delay: 0.5s"></div>
+                                </div>
+                                <!-- Bar 7: Edu -->
+                                <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                                    <div
+                                        class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
+                                        Edu:<span class="live-metric">+30%</span></div>
+                                    <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
+                                        style="height: 30%; animation-delay: 0.6s"></div>
+                                </div>
+                            </div>
+
+                            <!-- Labels -->
                             <div
-                                class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border border-gray-100 dark:border-slate-800 group">
+                                class="flex justify-between px-2 mb-6 text-[10px] text-gray-500 font-mono tracking-widest uppercase">
+                                <span class="w-full text-center">SaaS</span>
+                                <span class="w-full text-center">AI</span>
+                                <span class="w-full text-center">Bio</span>
+                                <span class="w-full text-center">Fin</span>
+                                <span class="w-full text-center">Eco</span>
+                                <span class="w-full text-center">Auto</span>
+                                <span class="w-full text-center">Edu</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-4 border-t border-gray-800 pt-6">
+                                <div class="text-center group cursor-help relative">
+                                    <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">24h
+                                        Vol
+                                    </div>
+                                    <div class="text-lg font-bold live-metric">84.2%</div>
+                                    <div
+                                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                        Global startup formation rate vs. 24h avg</div>
+                                </div>
+                                <div class="text-center border-l border-gray-800 group cursor-help relative">
+                                    <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">Net
+                                        Inflow</div>
+                                    <div class="text-lg font-bold text-white live-metric">$4.2M</div>
+                                    <div
+                                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                        Venture capital committed in last 60 mins</div>
+                                </div>
+                                <div class="text-center border-l border-gray-800 group cursor-help relative">
+                                    <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">
+                                        Sentiment</div>
+                                    <div class="text-lg font-bold text-white live-metric">+12.5%</div>
+                                    <div
+                                        class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                                        Social signal strength for emerging tech</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW: VISUAL WORKFLOW (How It Works) -->
+                <div class="w-full max-w-5xl mb-24 text-center">
+                    <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white">From Napkin Sketch to IPO
+                        Roadshow
+                    </h2>
+                    <div class="relative pt-10 pb-10">
+                        <!-- Connector Line -->
+                        <div
+                            class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-slate-800 -translate-y-1/2 hidden md:block z-0">
+                            <div class="data-packet w-20"></div>
+                            <div class="data-packet w-20" style="animation-delay: 1.5s"></div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                            <!-- Step 1 -->
+                            <div
+                                class="bento-card p-8 floating delay-100 group bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 transition-all duration-300">
                                 <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-900 dark:text-white group-hover:scale-110 transition-transform">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    class="w-16 h-16 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
                                         </path>
                                     </svg>
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Competitor Density</h4>
-                                    <p class="text-sm text-gray-500 dark:text-slate-400">Estimated saturation heatmaps
-                                        vs. blue ocean opportunities.</p>
+                                <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white tracking-tight">Input
+                                    Idea</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Describe your concept in plain
+                                    English.
+                                    No business jargon
+                                    required.</p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div
+                                class="bento-card p-8 floating delay-300 group bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 transition-all duration-300">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                        </path>
+                                    </svg>
                                 </div>
+                                <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white tracking-tight">AI
+                                    Processing</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Millions of data points analyzed
+                                    to structure your business
+                                    model.</p>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Visual: Live Dashboard -->
-                    <div class="bento-card p-6 bg-black text-white relative overflow-hidden shadow-2xl group">
-
-                        <div class="absolute top-0 left-0 w-full h-1 bg-white">
-                        </div>
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-sm text-gray-400 uppercase tracking-wider">Market Pulse</h3>
-                            <div class="flex items-center gap-2">
-                                <span class="relative flex h-2 w-2">
-                                    <span
-                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                                </span>
-                                <span class="text-xs text-white font-mono">LIVE</span>
-                            </div>
-                        </div>
-
-                        <!-- Trends Chart -->
-                        <!-- Trends Chart -->
-                        <div class="flex items-end justify-between h-32 gap-2 mb-2 px-2">
-                            <!-- Bar 1: SaaS -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
+                            <!-- Step 3 -->
+                            <div
+                                class="bento-card p-8 floating delay-500 group bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 transition-all duration-300">
                                 <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    SaaS:<span class="live-metric">+40%</span></div>
-                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
-                                    style="height: 40%"></div>
-                            </div>
-                            <!-- Bar 2: AI -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    AI:<span class="live-metric">+60%</span></div>
-                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
-                                    style="height: 60%; animation-delay: 0.1s"></div>
-                            </div>
-                            <!-- Bar 3: Bio -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    Bio:<span class="live-metric">+85%</span></div>
-                                <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
-                                    style="height: 85%; animation-delay: 0.2s"></div>
-                            </div>
-                            <!-- Bar 4: Fin -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    Fin:<span class="live-metric">+50%</span></div>
-                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
-                                    style="height: 50%; animation-delay: 0.3s"></div>
-                            </div>
-                            <!-- Bar 5: Eco -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    Eco:<span class="live-metric">+70%</span></div>
-                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
-                                    style="height: 70%; animation-delay: 0.4s"></div>
-                            </div>
-                            <!-- Bar 6: Auto -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    Auto:<span class="live-metric">+90%</span></div>
-                                <div class="w-full bg-white rounded-t-sm animate-pulse-bar"
-                                    style="height: 90%; animation-delay: 0.5s"></div>
-                            </div>
-                            <!-- Bar 7: Edu -->
-                            <div class="w-full flex flex-col justify-end h-full gap-1 group relative">
-                                <div
-                                    class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20">
-                                    Edu:<span class="live-metric">+30%</span></div>
-                                <div class="w-full bg-gray-800 rounded-t-sm animate-pulse-bar group-hover:bg-gray-700 transition-colors"
-                                    style="height: 30%; animation-delay: 0.6s"></div>
-                            </div>
-                        </div>
-
-                        <!-- Labels -->
-                        <div
-                            class="flex justify-between px-2 mb-6 text-[10px] text-gray-500 font-mono tracking-widest uppercase">
-                            <span class="w-full text-center">SaaS</span>
-                            <span class="w-full text-center">AI</span>
-                            <span class="w-full text-center">Bio</span>
-                            <span class="w-full text-center">Fin</span>
-                            <span class="w-full text-center">Eco</span>
-                            <span class="w-full text-center">Auto</span>
-                            <span class="w-full text-center">Edu</span>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-4 border-t border-gray-800 pt-6">
-                            <div class="text-center group cursor-help relative">
-                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">24h Vol
+                                    class="w-16 h-16 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
                                 </div>
-                                <div class="text-lg font-bold live-metric">84.2%</div>
-                                <div
-                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
-                                    Global startup formation rate vs. 24h avg</div>
-                            </div>
-                            <div class="text-center border-l border-gray-800 group cursor-help relative">
-                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">Net
-                                    Inflow</div>
-                                <div class="text-lg font-bold text-white live-metric">$4.2M</div>
-                                <div
-                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
-                                    Venture capital committed in last 60 mins</div>
-                            </div>
-                            <div class="text-center border-l border-gray-800 group cursor-help relative">
-                                <div class="text-xs text-gray-500 mb-1 group-hover:text-white transition-colors">
-                                    Sentiment</div>
-                                <div class="text-lg font-bold text-white live-metric">+12.5%</div>
-                                <div
-                                    class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] p-2 rounded w-32 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
-                                    Social signal strength for emerging tech</div>
+                                <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white tracking-tight">Execute
+                                    Plan</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Receive a 15-page strategy doc,
+                                    financial forecast, and
+                                    pitch deck.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- NEW: VISUAL WORKFLOW (How It Works) -->
-            <div class="w-full max-w-5xl mb-24 text-center">
-                <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white">From Napkin Sketch to IPO Roadshow
-                </h2>
-                <div class="relative pt-10 pb-10">
-                    <!-- Connector Line -->
+                <!-- NEW: GROWTH ENGINE CHART -->
+                <div
+                    class="w-full max-w-6xl mb-24 bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden group">
+                    <!-- Simulation Badge -->
                     <div
-                        class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-slate-800 -translate-y-1/2 hidden md:block z-0">
-                        <div class="data-packet w-20"></div>
-                        <div class="data-packet w-20" style="animation-delay: 1.5s"></div>
+                        class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-gray-300 text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-white/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                        Simulated Projection
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                        <!-- Step 1 -->
-                        <div class="bento-card p-8 floating delay-100 group">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">Input Idea</h3>
-                            <p class="text-sm text-gray-500 dark:text-slate-400">Describe your concept in plain English.
-                                No business jargon
-                                required.</p>
+                    <div
+                        class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-900/20 to-transparent pointer-events-none">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div>
+                            <h2 class="text-3xl md:text-5xl font-bold mb-6">The Growth Engine</h2>
+                            <p class="text-gray-400 text-lg mb-8">
+                                Visualize your path from Seed to Series B. Our simulation engine predicts cash flow
+                                bottlenecks before they happen.
+                            </p>
+                            <ul class="space-y-4 text-sm text-gray-300">
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Automated Burn Rate Calculation
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Customer Acquisition Cost (CAC) Modeling
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Identify Revenue Churn Risks
+                                </li>
+                            </ul>
+                            <button onclick="navigateTo('demo')"
+                                class="mt-8 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 hover:scale-105 transition-all shadow-lg">
+                                Simulate Growth
+                            </button>
                         </div>
 
-                        <!-- Step 2 -->
-                        <div class="bento-card p-8 bg-white floating delay-300 border-gray-200 group">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-black">AI Processing</h3>
-                            <p class="text-sm text-gray-500">Millions of data points analyzed to structure your business
-                                model.</p>
-                        </div>
+                        <!-- SVG Chart Animation -->
+                        <div class="relative h-64 w-full">
+                            <svg class="w-full h-full overflow-visible" viewBox="0 0 400 200">
+                                <!-- Grid -->
+                                <line x1="0" y1="200" x2="400" y2="200" stroke="#374151" stroke-width="2" />
+                                <line x1="0" y1="0" x2="0" y2="200" stroke="#374151" stroke-width="2" />
 
-                        <!-- Step 3 -->
-                        <div class="bento-card p-8 bg-white floating delay-500 group">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gray-900 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">Execute Plan</h3>
-                            <p class="text-sm text-gray-500">Receive a 15-page strategy doc, financial forecast, and
-                                pitch deck.</p>
+                                <!-- Area Fill -->
+                                <path d="M0,200 Q100,180 200,100 T400,20 V200 H0 Z" fill="url(#grad1)" opacity="0.2" />
+
+                                <defs>
+                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#000000;stop-opacity:0.2" />
+                                        <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- The Animated Line -->
+                                <path class="growth-line" d="M0,200 Q100,180 200,100 T400,20" fill="none"
+                                    stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+
+                                <!-- Points -->
+                                <circle cx="0" cy="200" r="4" fill="white" />
+                                <circle cx="200" cy="100" r="4" fill="white" class="floating delay-100">
+                                    <title>Series A</title>
+                                </circle>
+                                <circle cx="400" cy="20" r="4" fill="white" class="floating delay-300">
+                                    <title>IPO</title>
+                                </circle>
+
+                                <!-- Tooltip Card (Mock) -->
+                                <foreignObject x="220" y="30" width="120" height="60">
+                                    <div class="bg-gray-800 p-2 rounded-lg border border-gray-700 shadow-xl text-xs">
+                                        <div class="font-bold text-white">Projected ARR</div>
+                                        <div class="text-gray-300 font-mono">$12.5M</div>
+                                    </div>
+                                </foreignObject>
+                            </svg>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- NEW: GROWTH ENGINE CHART -->
-            <div
-                class="w-full max-w-6xl mb-24 bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden group">
-                <!-- Simulation Badge -->
-                <div
-                    class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-gray-300 text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-white/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                    Simulated Projection
+                <!-- Intro to Features -->
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Why startups fail?</h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                        Most founders have the spark but lack the roadmap.
+                        <a onclick="navigateTo('features')"
+                            class="text-gray-900 dark:text-white font-semibold cursor-pointer hover:underline">Explore
+                            our
+                            solutions →</a>
+                    </p>
                 </div>
 
-                <div
-                    class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-900/20 to-transparent pointer-events-none">
-                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-6">The Growth Engine</h2>
-                        <p class="text-gray-400 text-lg mb-8">
-                            Visualize your path from Seed to Series B. Our simulation engine predicts cash flow
-                            bottlenecks before they happen.
-                        </p>
-                        <ul class="space-y-4 text-sm text-gray-300">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Automated Burn Rate Calculation
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Customer Acquisition Cost (CAC) Modeling
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Identify Revenue Churn Risks
-                            </li>
-                        </ul>
-                        <button onclick="navigateTo('demo')"
-                            class="mt-8 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 hover:scale-105 transition-all shadow-lg">
-                            Simulate Growth
-                        </button>
+                <!-- Testimonials (Recovered Feature) -->
+                <div class="w-full max-w-5xl mx-auto mb-10">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold mb-4 text-gray-900">Loved by Innovators</h2>
                     </div>
-
-                    <!-- SVG Chart Animation -->
-                    <div class="relative h-64 w-full">
-                        <svg class="w-full h-full overflow-visible" viewBox="0 0 400 200">
-                            <!-- Grid -->
-                            <line x1="0" y1="200" x2="400" y2="200" stroke="#374151" stroke-width="2" />
-                            <line x1="0" y1="0" x2="0" y2="200" stroke="#374151" stroke-width="2" />
-
-                            <!-- Area Fill -->
-                            <path d="M0,200 Q100,180 200,100 T400,20 V200 H0 Z" fill="url(#grad1)" opacity="0.2" />
-
-                            <defs>
-                                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#000000;stop-opacity:0.2" />
-                                    <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
-                                </linearGradient>
-                            </defs>
-
-                            <!-- The Animated Line -->
-                            <path class="growth-line" d="M0,200 Q100,180 200,100 T400,20" fill="none" stroke="#ffffff"
-                                stroke-width="3" stroke-linecap="round" />
-
-                            <!-- Points -->
-                            <circle cx="0" cy="200" r="4" fill="white" />
-                            <circle cx="200" cy="100" r="4" fill="white" class="floating delay-100">
-                                <title>Series A</title>
-                            </circle>
-                            <circle cx="400" cy="20" r="4" fill="white" class="floating delay-300">
-                                <title>IPO</title>
-                            </circle>
-
-                            <!-- Tooltip Card (Mock) -->
-                            <foreignObject x="220" y="30" width="120" height="60">
-                                <div class="bg-gray-800 p-2 rounded-lg border border-gray-700 shadow-xl text-xs">
-                                    <div class="font-bold text-white">Projected ARR</div>
-                                    <div class="text-gray-300 font-mono">$12.5M</div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                    JD</div>
+                                <div>
+                                    <h5 class="font-bold text-sm">John Doe</h5>
+                                    <p class="text-xs text-gray-500">CEO, TechFlow</p>
                                 </div>
-                            </foreignObject>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Intro to Features -->
-            <div class="text-center max-w-4xl mx-auto mb-20">
-                <h2 class="text-3xl font-bold mb-4 text-gray-900">Why startups fail?</h2>
-                <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
-                    Most founders have the spark but lack the roadmap.
-                    <a onclick="navigateTo('features')"
-                        class="text-gray-900 dark:text-white font-semibold cursor-pointer hover:underline">Explore our
-                        solutions →</a>
-                </p>
-            </div>
-
-
-            <!-- Testimonials (Recovered Feature) -->
-            <div class="w-full max-w-5xl mx-auto mb-10">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Loved by Innovators</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
-                                JD</div>
-                            <div>
-                                <h5 class="font-bold text-sm">John Doe</h5>
-                                <p class="text-xs text-gray-500">CEO, TechFlow</p>
                             </div>
+                            <p class="text-sm text-gray-600 italic mb-4">"I generated a complete business plan in
+                                minutes.
+                                The financial projections were surprisingly accurate for an AI."</p>
+                            <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
                         </div>
-                        <p class="text-sm text-gray-600 italic mb-4">"I generated a complete business plan in minutes.
-                            The financial projections were surprisingly accurate for an AI."</p>
-                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
-                    </div>
-                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
-                                AS</div>
-                            <div>
-                                <h5 class="font-bold text-sm">Alice Smith</h5>
-                                <p class="text-xs text-gray-500">Founder, GreenLife</p>
+                        <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                    AS</div>
+                                <div>
+                                    <h5 class="font-bold text-sm">Alice Smith</h5>
+                                    <p class="text-xs text-gray-500">Founder, GreenLife</p>
+                                </div>
                             </div>
+                            <h4>Growth Roadmap</h4>
+                            <p class="text-muted small">Step-by-step execution plan from Seed to Series A, tailored to
+                                your
+                                specific industry methodology.</p>
+                            <p class="text-sm text-gray-600 italic mb-4">"The competitor analysis saved me weeks of
+                                research. It's like having a co-founder for strategy."</p>
+                            <div class="flex text-gray-900 dark:text-white text-xs">★★★★½</div>
                         </div>
-                        <h4>Growth Roadmap</h4>
-                        <p class="text-muted small">Step-by-step execution plan from Seed to Series A, tailored to your
-                            specific industry methodology.</p>
-                        <p class="text-sm text-gray-600 italic mb-4">"The competitor analysis saved me weeks of
-                            research. It's like having a co-founder for strategy."</p>
-                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★½</div>
-                    </div>
-                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
-                                MR</div>
-                            <div>
-                                <h5 class="font-bold text-sm">Michael Ross</h5>
-                                <p class="text-xs text-gray-500">Product Lead</p>
+                        <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
+                                    MR</div>
+                                <div>
+                                    <h5 class="font-bold text-sm">Michael Ross</h5>
+                                    <p class="text-xs text-gray-500">Product Lead</p>
+                                </div>
                             </div>
+                            <p class="text-sm text-gray-600 italic mb-4">"The best tool for validating MVP ideas. I use
+                                it
+                                for every hackathon project we run."</p>
+                            <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
                         </div>
-                        <p class="text-sm text-gray-600 italic mb-4">"The best tool for validating MVP ideas. I use it
-                            for every hackathon project we run."</p>
-                        <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
                     </div>
                 </div>
-            </div>
 
-            <!-- FAQ Section -->
-            <section class="w-full max-w-3xl mx-auto mb-20 px-4 animate-in fade-in slide-in-bottom delay-100">
-                <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
-                <div class="space-y-4">
-                    <details
-                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
-                        <summary
-                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
-                            Is the data real or hallucinated?
-                            <span
-                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
-                            We use a hybrid approach. The structural logic and financial formulas are deterministic
-                            based on industry standards. The text content is generated by LLMs trained on successful
-                            pitch decks.
-                        </p>
-                    </details>
-                    <details
-                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
-                        <summary
-                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
-                            Can I export this to PDF?
-                            <span
-                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
-                            Yes! You can simply use your browser's "Print to PDF" function. The layout is optimized for
-                            A4 printing. A native "Export Deck" feature is coming soon.
-                        </p>
-                    </details>
-                    <details
-                        class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
-                        <summary
-                            class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
-                            Is my idea kept private?
-                            <span
-                                class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
-                            Absolutely. We do not store your idea inputs or share them with third parties. Your session
-                            is ephemeral and runs locally in your browser context.
-                        </p>
-                    </details>
-                </div>
-            </section>
+                <!-- FAQ Section -->
+                <section class="w-full max-w-3xl mx-auto mb-20 px-4 animate-in fade-in slide-in-bottom delay-100">
+                    <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <details
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                            <summary
+                                class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                                Is the data real or hallucinated?
+                                <span
+                                    class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                            </summary>
+                            <p
+                                class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                                We use a hybrid approach. The structural logic and financial formulas are deterministic
+                                based on industry standards. The text content is generated by LLMs trained on successful
+                                pitch decks.
+                            </p>
+                        </details>
+                        <details
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                            <summary
+                                class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                                Can I export this to PDF?
+                                <span
+                                    class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                            </summary>
+                            <p
+                                class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                                Yes! You can simply use your browser's "Print to PDF" function. The layout is optimized
+                                for
+                                A4 printing. A native "Export Deck" feature is coming soon.
+                            </p>
+                        </details>
+                        <details
+                            class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors group">
+                            <summary
+                                class="font-bold text-gray-900 dark:text-white list-none flex justify-between items-center">
+                                Is my idea kept private?
+                                <span
+                                    class="text-gray-400 group-hover:text-gray-900 transition-colors transform group-open:rotate-45 duration-200">+</span>
+                            </summary>
+                            <p
+                                class="mt-4 text-gray-600 dark:text-slate-300 text-sm leading-relaxed animate-in fade-in">
+                                Absolutely. We do not store your idea inputs or share them with third parties. Your
+                                session
+                                is ephemeral and runs locally in your browser context.
+                            </p>
+                        </details>
+                    </div>
+                </section>
         </section>
 
 
