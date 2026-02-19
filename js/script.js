@@ -244,14 +244,29 @@ if (generateBtn) {
         const ind = indInput ? indInput.value : 'SaaS';
         const bud = document.getElementById('input-budget').value;
 
-        if (!idea) {
+        if (!idea || idea.trim().length < 3) {
             ideaInput.focus();
-            ideaInput.classList.add('border-red-500', 'ring-1', 'ring-red-500');
-            ideaInput.placeholder = "Please enter an idea to proceed!";
+            ideaInput.classList.add('border-red-500', 'ring-1', 'ring-red-500', 'shake');
+
+            // Show error message
+            const errorMsg = document.getElementById('idea-error-msg');
+            if (errorMsg) {
+                errorMsg.classList.remove('hidden');
+            }
+
+            // Remove shake animation after 500ms
             setTimeout(() => {
+                ideaInput.classList.remove('shake');
+            }, 500);
+
+            // Clear error on typing
+            const clearError = () => {
                 ideaInput.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
-                ideaInput.placeholder = "e.g. A marketplace for recycled ocean plastic products...";
-            }, 2000);
+                if (errorMsg) errorMsg.classList.add('hidden');
+                ideaInput.removeEventListener('input', clearError);
+            };
+            ideaInput.addEventListener('input', clearError);
+
             return;
         }
 
