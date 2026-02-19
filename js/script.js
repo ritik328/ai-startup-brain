@@ -270,6 +270,10 @@ if (generateBtn) {
             return;
         }
 
+        // Increment User Stats
+        let currentCount = parseInt(localStorage.getItem('userGenCount') || '0');
+        localStorage.setItem('userGenCount', currentCount + 1);
+
         // Show Loading
         const inputView = document.getElementById('demo-input-view'); // Note: ID check needed?
         // Actually, looking at previous code, it used demo-input-view but index.html has page-demo?
@@ -1201,3 +1205,66 @@ function copyToClipboard(text, id) {
         }, 2000);
     });
 }
+// --- SCROLL & NAV LOGIC ---
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    const navContainer = document.getElementById('nav-container');
+
+    if (window.scrollY > 50) {
+        nav.classList.add('py-2');
+        nav.classList.remove('py-4');
+        navContainer.classList.add('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+        navContainer.classList.remove('bg-white/80', 'dark:bg-slate-900/80');
+    } else {
+        nav.classList.add('py-4');
+        nav.classList.remove('py-2');
+        navContainer.classList.remove('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+        navContainer.classList.add('bg-white/80', 'dark:bg-slate-900/80');
+    }
+});
+
+// --- COUNTER ANIMATION ---
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const userGenCount = parseInt(localStorage.getItem('userGenCount') || '0');
+
+    counters.forEach(counter => {
+        let target = +counter.getAttribute('data-target');
+
+        // Add user's contribution to "Ideas Generated" (12450 is the base)
+        if (target === 12450) {
+            target += userGenCount;
+        }
+
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+
+        let current = 0;
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.innerText = Math.ceil(current).toLocaleString();
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerText = target.toLocaleString() + "+";
+            }
+        };
+        updateCounter();
+    });
+}
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if element is in viewport before animating
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.disconnect(); // Run once
+            }
+        });
+    });
+
+    const statsSection = document.querySelector('.counter')?.closest('.grid');
+    if (statsSection) observer.observe(statsSection);
+});

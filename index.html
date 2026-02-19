@@ -110,10 +110,11 @@
         </div>
     </div>
 
-    <!-- Navigation (Centered Layout) -->
-    <nav class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-        <div
-            class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-gray-200 dark:border-slate-800 rounded-full py-3 px-6 shadow-sm flex items-center gap-8 max-w-2xl w-full justify-between">
+    <!-- Navigation (Sticky & Adaptive) -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 transition-all duration-300">
+        <div id="nav-container"
+            class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-gray-200 dark:border-slate-800 rounded-full py-3 px-6 shadow-sm flex items-center gap-8 max-w-2xl w-full justify-between transition-all duration-300">
             <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('home')">
                 <div class="w-6 h-6 bg-black dark:bg-white rounded flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white dark:text-black"
@@ -183,7 +184,7 @@
                     <div class="pill-badge cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors border border-gray-200 dark:border-slate-700"
                         onclick="navigateTo('features')">
                         <span class="mr-2 font-bold">★</span>
-                        <span class="font-bold text-gray-900 dark:text-white">v2.0:
+                        <span class="font-bold text-gray-900 dark:text-white">v2.1:
                             Now with Financial Modeling</span>
                         <svg class="w-4 h-4 ml-1 text-gray-900 dark:text-white" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -201,21 +202,25 @@
                 </h1>
 
                 <p
-                    class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200">
+                    class="text-xl text-gray-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-bottom delay-200">
                     Turn a raw idea into a <strong>structured business model</strong>, <strong>growth roadmap</strong>,
                     and <strong>investor pitch deck</strong> in 30 seconds.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <button onclick="navigateTo('demo')"
-                        class="btn-primary px-8 py-4 font-semibold text-lg shadow-lg shadow-gray-200">
+                        class="btn-primary px-8 py-4 font-semibold text-lg shadow-lg shadow-gray-200 dark:shadow-none hover:scale-105 transition-transform duration-200">
                         Try Generator Free
                     </button>
                     <button onclick="navigateTo('about')"
-                        class="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 rounded-full font-semibold text-lg transition-all">
+                        class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 px-8 py-4 rounded-full font-semibold text-lg transition-all">
                         How it Works
                     </button>
                 </div>
+
+                <p class="mt-6 text-xs text-gray-400 dark:text-slate-500 font-medium">
+                    * AI outputs are simulated based on industry data patterns.
+                </p>
             </div>
 
             <!-- Trusted By / Stats Strip (Centered) -->
@@ -227,17 +232,17 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center justify-center">
                         <div class="flex flex-col items-center">
                             <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="12000">0</span>
+                                data-target="12450">0</span>
                             <span class="text-sm text-gray-500 dark:text-slate-400">Ideas Generated</span>
                         </div>
                         <div class="flex flex-col items-center">
                             <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="92">0</span>
-                            <span class="text-sm text-gray-500 dark:text-slate-400">Accuracy Rate</span>
+                                data-target="94">0</span>
+                            <span class="text-sm text-gray-500 dark:text-slate-400">% Accuracy Rate</span>
                         </div>
                         <div class="flex flex-col items-center">
                             <span class="text-3xl font-bold text-gray-900 dark:text-white counter"
-                                data-target="500">0</span>
+                                data-target="5200">0</span>
                             <span class="text-sm text-gray-500 dark:text-slate-400">Business Models</span>
                         </div>
                     </div>
@@ -249,13 +254,13 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="text-left">
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wide mb-6">
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wide mb-6">
                             <span class="relative flex h-2 w-2">
                                 <span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white dark:bg-black opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white dark:bg-black"></span>
                             </span>
-                            Live Market Feed
+                            Simulated Market Feed
                         </div>
                         <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Real-time niche analysis.</h2>
                         <p class="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
@@ -335,7 +340,13 @@
                     </div>
 
                     <!-- Visual: Live Dashboard -->
-                    <div class="bento-card p-6 bg-black text-white relative overflow-hidden shadow-2xl">
+                    <div class="bento-card p-6 bg-black text-white relative overflow-hidden shadow-2xl group">
+                        <!-- Simulation Badge -->
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-[9px] uppercase font-bold px-2 py-0.5 rounded-full border border-white/10 opacity-50 group-hover:opacity-100 transition-opacity z-10 cursor-help"
+                            title="Data simulated based on real-time market patterns">
+                            Simulated Live Feed
+                        </div>
+
                         <div class="absolute top-0 left-0 w-full h-1 bg-white">
                         </div>
                         <div class="flex justify-between items-center mb-6">
@@ -501,7 +512,14 @@
             </div>
 
             <!-- NEW: GROWTH ENGINE CHART -->
-            <div class="w-full max-w-6xl mb-24 bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden">
+            <div
+                class="w-full max-w-6xl mb-24 bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden group">
+                <!-- Simulation Badge -->
+                <div
+                    class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-gray-300 text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-white/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                    Simulated Projection
+                </div>
+
                 <div
                     class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-900/20 to-transparent pointer-events-none">
                 </div>
@@ -540,7 +558,7 @@
                             </li>
                         </ul>
                         <button onclick="navigateTo('demo')"
-                            class="mt-8 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                            class="mt-8 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 hover:scale-105 transition-all shadow-lg">
                             Simulate Growth
                         </button>
                     </div>
@@ -598,13 +616,14 @@
                 </p>
             </div>
 
+
             <!-- Testimonials (Recovered Feature) -->
             <div class="w-full max-w-5xl mx-auto mb-10">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold mb-4 text-gray-900">Loved by Innovators</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bento-card p-6">
+                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <div
                                 class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
@@ -618,7 +637,7 @@
                             The financial projections were surprisingly accurate for an AI."</p>
                         <div class="flex text-gray-900 dark:text-white text-xs">★★★★★</div>
                     </div>
-                    <div class="bento-card p-6">
+                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <div
                                 class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
@@ -635,7 +654,7 @@
                             research. It's like having a co-founder for strategy."</p>
                         <div class="flex text-gray-900 dark:text-white text-xs">★★★★½</div>
                     </div>
-                    <div class="bento-card p-6">
+                    <div class="bento-card p-6 hover:-translate-y-1 transition-transform duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <div
                                 class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-900">
