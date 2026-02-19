@@ -795,3 +795,48 @@ body {
         transform: translateZ(100px) rotate(90deg);
     }
 }
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+
+    /* Disable 3D transforms on container */
+    .container-loader {
+        transform: scale(0.6);
+        /* Scale down instead of perspective */
+        transform-style: flat;
+    }
+
+    /* Simplify elements */
+    .container-loader .aro {
+        box-shadow: none !important;
+        /* Remove expensive shadow */
+        border: 1px solid #2563EB;
+        /* Cheap fallback */
+        animation: mobile-pulse 3s infinite ease-in-out both;
+        /* Simpler 2D animation */
+    }
+
+    /* Reduce element count (Hide inner/outer rings) */
+    .container-loader .aro:nth-child(even) {
+        display: none;
+    }
+
+    /* Hide deep nested rings (>7) */
+    .container-loader .aro:nth-child(n+8) {
+        display: none;
+    }
+}
+
+@keyframes mobile-pulse {
+
+    0%,
+    100% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(180deg);
+        opacity: 0.8;
+    }
+}
